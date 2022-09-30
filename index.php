@@ -53,7 +53,11 @@ if (isset($_REQUEST['mensaje'])) $mensaje=$_REQUEST['mensaje'];
             <tr align="center"><td colspan="3">NUESTROS SERVICIOS DE APOYO</td></tr>
             <tr align="center"><td colspan="3">Consulta veterinaria presencial, servicio a domicilio, cirugías y hospitalización, laboratorio, radiología y ecografía.</td>            </tr>
             <tr>
-                <th colspan="3"><img src="presentacion/imagenes/portada/cita-de-control.webp" height="250"></th>
+                <th colspan="3">
+                    <a href="presentacion/configuracion/usuariosFormulario.php">
+                    <img src="presentacion/imagenes/portada/cita-de-control.webp" height="250">
+                    </a>
+                </th>
             </tr>
         </table>
     </body>

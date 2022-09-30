@@ -24,7 +24,7 @@ if (isset($_REQUEST['id'])) {
 ?>
 
 <h3 align="center"><?= strtoupper($titulo) ?> USUARIO</h3>
-<form name="formulario" method="post" action="principal.php?CONTENIDO=presentacion/configuracion/usuariosActualizar.php">
+<form name="formulario" method="post" action="usuariosActualizar.php">
     <table border="0">
         <!--<tr><th>Tipo Usuario</th><td><input type="text" name="tipoUsuario" value="<?= $usuario->getTipoUsuario() ?>" required></td><td>A: Administrador; C: Cliente; M: Médico; S: Asociado</td></tr>-->
         <tr><th>Tipo usuario</th><td><input type="radio" name="tipoUsuario" value="A">Administrador</td></tr>
