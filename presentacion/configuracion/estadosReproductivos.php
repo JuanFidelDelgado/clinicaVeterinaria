@@ -1,0 +1,49 @@
+<?php
+
+/* 
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
+ */
+
+@session_start();
+if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
+
+$lista='';
+@$resultado= EstadosReproductivos::getListaBuscarEnObjetos($_REQUEST['parametro'], 'id');
+for ($i = 0; $i < count($resultado); $i++) {
+    $estados=$resultado[$i];
+    $lista.="<tr>";
+    $lista.="<td>{$estados->getNombre()}</td>";
+    $lista.="<td>{$estados->getObservaciones()}</td>";
+    $lista.="<td>";
+        $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/estadosReproductivosFormulario.php&accion=Modificar&id={$estados->getId()}' title='Modificar estado'><img src='presentacion/imagenes/update.png'></a>";
+        $lista.="<img src='presentacion/imagenes/delete.png' onClick='eliminar({$estados->getId()})' title='Eliminar'>";
+    $lista.="</td>";
+    $lista.="</tr>";
+}
+?>
+
+<h3 align="center">LISTA DE ESTADOS REPRODUCTIVOS</h3>
+<p></p>
+<form name="formularioBuscar" method="post" action="estadosReproductivos.php">
+    <table border="0" align="center">
+        <tr>
+            <th>Buscar:</th><th><input type="text" name="parametro" value="" /></th><th><input type="submit" value="Buscar"/></th>
+            <th><a href="principal.php?CONTENIDO=inicio.php" name="Home" title="Home"><img src='presentacion/imagenes/home.png' title='Home'></a></th>
+        </tr>
+    </table>
+</form>
+<p></p>
+<table border="1" align="center">
+    <tr>
+        <th>Nombre</th><th>Observaciones</th><th><a href="principal.php?CONTENIDO=presentacion/configuracion/estadosReproductivosFormulario.php&accion=Adicionar" name="Adicionar" title="Adicionar"><img src='presentacion/imagenes/add.png' title='Adicionar'></a></th>
+    </tr>
+    <?=$lista?>
+    
+</table>
+<script type="text/javascript">
+function eliminar(id){
+    var respuesta=confirm("¿Está seguro de eliminar este registro?");
+    if (respuesta)location="principal.php?CONTENIDO=presentacion/configuracion/estadosReproductivosActualizar.php&accion=Eliminar&id="+id;
+}
+</script>

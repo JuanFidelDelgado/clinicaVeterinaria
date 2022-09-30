@@ -1,0 +1,180 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : 17/05/2022, 8:56:13 p. m.
+    Author     : adora
+*/
+
+#index{
+    top: 100px;
+}
+
+body{ /*Características del cuerpo*/ 
+    background-color: #4ab4c4;
+    /*background-image: url(../imagenes/animalcenter.png);
+    background-repeat: repeat-y;*/
+    background-size: 20%;
+    overflow: visible;
+    margin: 0;
+    scroll: 
+}
+
+h2{ /*Color del texto de titulos*/
+    color: #fff;
+}
+h4{ /*Color del texto de titulos*/
+    color: #fff;
+}
+
+h3{ /*Color del texto de titulos*/
+    color: #000000;
+}
+
+tr:hover{ /*Características cuando el puntero pasa sobre las filas*/
+    color: black;
+}
+
+th{ /*Color para los encabezados de las tablas*/
+    /*background-color: #fff;*/
+}
+
+input:focus{ /*Características cuando los elementos de los formularios estan en uso*/
+    color: blue;
+}
+
+input:hover{
+    
+}
+
+#banner{
+    border-radius: 10px 10px 10px 10px;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    height: 180px;
+    width: 1300px;
+    z-index: 1;
+    background-color: #006666;
+    background-image: url(../imagenes/animalcenternombre.png);
+    color: #006666;
+    font-size: larger;
+}
+
+#menu{
+    position: absolute;
+    top: 100px;
+    left: 30px;
+    height: 20px;
+    width: 1300px;
+    z-index: 2;
+    background-color: blanchedalmond;
+    color: black;
+}
+
+#contenido{
+    border-radius: 10px 10px 10px 10px;
+    padding-top: 10px;
+    position: absolute;
+    top: 220px;
+    left: 300px;
+    width: 1030px;
+    z-index: 3;
+    background-color: #cccccc;
+    color: #493c46;
+}
+
+li{ /*características de las listas*/
+    display: inline;
+    padding-left: 3px;
+    padding-right: 3px;
+    color: black;
+}
+
+.container{
+  padding: 20px;
+  position: absolute;
+  top: 200px;
+  left: 10px;
+  background-color: #4ab4c4;
+  color: #4ab4c4;
+}
+
+.card{
+  width: 250px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 10px 10px;
+  color: #4ab4c4;
+}
+
+.header{
+  border-radius: 10px 10px 0px 0px;
+  padding: 5px;
+  background-color: #2A3942;
+  background-color: #493c46;
+  color: white;
+}
+
+.iconM{
+  font-size: 14px;
+  margin-left: 170px;
+  color: #493c46;
+}
+
+.icon{
+  margin-right: 8px;
+  font-size: 24px;
+  color: #493c46;
+}
+
+.body li{
+  transition: 1s all;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  padding: 15px;
+  margin-left: -40px;
+  margin-top: 0px;
+  color: #fff;
+  list-style: none;
+  display: block;
+  border-top-right-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
+}
+
+li:hover{
+  transition: 1s all;
+  color: #2f89fc;
+  background-color: rgba(42, 56, 65, 0.82);
+  border-top-right-radius: 10px 10px;
+  border-bottom-right-radius: 10px 10px;
+  cursor: pointer;
+}
+
+.body > li{
+  float: left;
+}
+
+.body li ul{
+  background: #1E2B32;
+  margin-left: 280px;
+  margin-top: -38px;
+  display: none;
+  position: absolute;
+  border-top-right-radius: 15px 15px;
+  border-bottom-right-radius: 15px 15px;
+  
+}
+
+.body li:hover > ul{
+  display: none;
+  cursor: pointer;
+}
+
+#chartdiv {
+    width: 50%;
+    max-height: 600px;
+    height: 100px;
+    background-color: #1E2B32;
+}
