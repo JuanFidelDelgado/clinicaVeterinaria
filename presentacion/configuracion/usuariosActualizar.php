@@ -4,17 +4,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
  */
-require_once '../../logica/clases/Usuario.php';
+//require_once '../../logica/clases/Usuario.php';
 
 
-//@session_start();
-//if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
+@session_start();
+if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
 
 $usuario= new Usuario(null, null);
-$rutaRegistro=header('location: principal.php?CONTENIDO=presentacion/configuracion/usuarios.php');
+//$rutaRegistro=header('location: principal.php?CONTENIDO=presentacion/configuracion/usuarios.php');
 switch ($_REQUEST['accion']){
     case 'Adicionar':
-        $usuario->setTipoUsuario("C");
+        $usuario->setTipoUsuario($_REQUEST['tipoUsuario']);
         $usuario->setIdentificacion($_REQUEST['identificacion']);
         $usuario->setTipoIdentificacion($_REQUEST['tipoIdentificacion']);
         $usuario->setNombres($_REQUEST['nombres']);
@@ -25,7 +25,6 @@ switch ($_REQUEST['accion']){
         $usuario->setCorreoElectronico($_REQUEST['correoElectronico']);
         $usuario->setClave($_REQUEST['clave']);
         $usuario->guardar();
-        //header('location: index.php');
         break;
     case 'Modificar':
         $usuario->setId($_REQUEST['id']);

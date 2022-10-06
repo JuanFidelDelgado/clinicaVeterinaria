@@ -7,7 +7,7 @@
 
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
-//$paciente= $_REQUEST['idPaciente'];
+$paciente= $_REQUEST['idPaciente'];
 $paciente= new Pacientes('id', $_REQUEST['idPaciente']);
 
 $resultado= HistoriaClinica::getListaEnObjetos("idPaciente={$_REQUEST['idPaciente']}", "idPaciente");
@@ -17,7 +17,6 @@ $lista='';
 for ($i = 0; $i < count($resultado); $i++) {
     $historiaClinica=$resultado[$i];
     $lista.="<tr>";
-    $lista.="<td>{$historiaClinica->getId()}</td>";
     $lista.="<td>{$historiaClinica->getFechaHora()}</td>";
     $lista.="<td>{$historiaClinica->getIdPaciente()}</td>";
     $lista.="<td>{$historiaClinica->getFechaEsterilizacion()}</td>";
@@ -35,7 +34,7 @@ for ($i = 0; $i < count($resultado); $i++) {
 <p></p>
 <table border="1" align="center">
     <tr>
-        <th>Id</th><th>Fecha Apertura</th><th>Paciente</th><th>Fecha Esterilización</th><th>Tipo Alimentación</th><th>Habitat</th>
+        <th>Fecha Apertura</th><th>Paciente</th><th>Fecha Esterilización</th><th>Tipo Alimentación</th><th>Habitat</th>
         <?php
         if ($cuenta=='0') {
         ?>

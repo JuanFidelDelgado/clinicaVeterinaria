@@ -15,5 +15,5 @@ $consulta->setIdMedico($_REQUEST['idMedico']);
 $consulta->setIdPaciente($_REQUEST['idPaciente']);
 $consulta->setIdHistoriaClinica($_REQUEST['idHistoriaClinica']);
 $consulta->guardar();
-header('location: principal.php?CONTENIDO=presentacion/consulta/consulta.php')
+header('location: principal.php?CONTENIDO=presentacion/consulta/examenClinico.php')
 ?>

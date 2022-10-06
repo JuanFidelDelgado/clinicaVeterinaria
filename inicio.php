@@ -36,13 +36,19 @@ if ($USUARIO->getTipoUsuarioEnObjeto()=='Administrador'){
     $lista.="<th><a href='principal.php?CONTENIDO=presentacion/configuracion/estadosReproductivos.php'><img src='presentacion/imagenes/habitat.png' width='100' height='100'><br>ESTADOS<br>REPRODUCTIVOS</a></th>";
     $lista.="<th><a href='index.php'><img src='presentacion/imagenes/exit.png' width='100' height='100'><br>SALIR</a></th>";
     $lista.="</tr>";
-} else {
+} else if ($USUARIO->getTipoUsuarioEnObjeto()=='Médico' || $USUARIO->getTipoUsuarioEnObjeto()=='Asociado'){
     "<h3></h3>";
     $lista.="<tr>";
     $lista.="<th><a href='principal.php?CONTENIDO=presentacion/configuracion/pacientes.php'><img src='presentacion/imagenes/species.png' width='200' height='200'><br>PACIENTES</a></th>";
     $lista.="<th><a href='principal.php?CONTENIDO=presentacion/configuracion/citas.php'><img src='presentacion/imagenes/calendar.png' width='200' height='200'><br>CITAS</a></th>";
     $lista.="</tr>";
-}
+} else if ($USUARIO->getTipoUsuarioEnObjeto()=='Cliente'){
+    "<h3></h3>";
+    $lista.="<tr>";
+    $lista.="<th><a href='principal.php?CONTENIDO=presentacion/configuracion/pacientes.php&idUsuario={$USUARIO->getId()}'><img src='presentacion/imagenes/species.png' width='200' height='200'><br>MIS MASCOTAS</a></th>";
+    $lista.="<th><a href='principal.php?CONTENIDO=presentacion/configuracion/citas.php'><img src='presentacion/imagenes/calendar.png' width='200' height='200'><br>CITAS</a></th>";
+    $lista.="</tr>";
+} 
 ?>
 <center>
     <h2></h2>

@@ -21,7 +21,7 @@ if (isset($_REQUEST['id'])) {
 <h3><?= strtoupper($titulo) ?> HISTORIA CLINICA</h3>
 <form name="formulario" method="post" action="principal.php?CONTENIDO=presentacion/consulta/historiaClinicaActualizar.php">
     <table border="0">
-        <tr><th>Fecha Esterilización</th><td><input type="date" name="fechaEsterilizacion" value="<?= $historiaClinica->getFechaEsterilizacion() ?>" required></td></tr>
+        <tr><th>Fecha Esterilización</th><td><input type="date" name="fechaEsterilizacion" value="<?= $historiaClinica->getFechaEsterilizacion() ?>"></td></tr>
         <tr><th>Tipo Alimentación</th><td><select name="tipoAlimentacion"><?= TipoAlimentacion::getListaEnOptions($historiaClinica->getTipoAlimentacion()) ?>"</select></td></tr>
         <tr><th>Habitat</th><td><select name="habitat"><?= Habitat::getListaEnOptions($historiaClinica->getHabitat()) ?>"</select></td></tr>
     </table><p>

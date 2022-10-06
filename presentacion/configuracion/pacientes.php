@@ -35,7 +35,7 @@ if ($idUsuario=='' || $idUsuario==null){
         $lista.="</td>";
         $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/historiaClinica.php&idPaciente={$paciente->getId()}' title='Ver historia clinica'><img src='presentacion/imagenes/folder.png'></a></td>";
         if ($historiaClinica->getId()==null){
-            $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/historiaClinicaFormulario.php&idPaciente={$paciente->getId()}'>Crear historia clínica</a></td>";            
+            $lista.="<td>El paciente no tiene historia clínica</td>";            
         } else {
             $lista.="<td>";
                 $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citas.php&idPaciente={$paciente->getId()}' title='Ver citas'><img src='presentacion/imagenes/calendar.png' width='40' heigth='40'></a>";
@@ -65,11 +65,16 @@ if ($idUsuario=='' || $idUsuario==null){
         $lista.="<td>";
             $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/pacientesFormulario.php&accion=Modificar&id={$paciente->getId()}&idUsuario={$usuario->getId()}' title='Modificar'><img src='presentacion/imagenes/update.png'></a>";
             $lista.="<img src='presentacion/imagenes/delete.png' onClick='eliminar({$paciente->getId()})' title='Eliminar'>";
-        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/historiaClinica.php' title='Ver historia clinica'><img src='presentacion/imagenes/folder.png'></a></td>";
-        $lista.="<td>";
-            $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citasFormulario.php&idPaciente={$paciente->getId()}' title='Agendar cita'><img src='presentacion/imagenes/add.png'></a>";
-            $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citas.php&idPaciente={$paciente->getId()}' title='Ver citas'><img src='presentacion/imagenes/calendar.png' heigth='48' width='48'></a>";
-        $lista.="</td>";
+        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/historiaClinica.php&idPaciente={$paciente->getId()}' title='Ver historia clinica'><img src='presentacion/imagenes/folder.png'></a></td>";
+        if ($historiaClinica->getId()==null){
+            $lista.="<td>El paciente no tiene historia clínica</td>";            
+        } else {
+            $lista.="<td>";
+                $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citas.php&idPaciente={$paciente->getId()}' title='Ver citas'><img src='presentacion/imagenes/calendar.png' width='40' heigth='40'></a>";
+                $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citasFormulario.php&idPaciente={$paciente->getId()}' title='Agendar cita'><img src='presentacion/imagenes/add.png'></a>";
+            $lista.="</td>";
+        }
+        $lista.="</tr>";;
         $lista.="</tr>";
     }
 }  
