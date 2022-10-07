@@ -49,7 +49,7 @@ create table raza (
     idEspecie int not null
 );
 
-    alter table raza add foreign key(idEspecie) references especie(id) on delete restrict on update cascade;
+alter table raza add foreign key(idEspecie) references especie(id) on delete restrict on update cascade;
 
 create table paciente (
     id int auto_increment primary key not null,
@@ -105,9 +105,9 @@ alter table consulta add foreign key(idPaciente) references paciente(id) on dele
 create table examenClinico (
     id int auto_increment primary key not null,
     idConsulta int not null,
-    actitud varchar(500) not null,
-    condicionCorporal varchar(50) not null,
-    estadoHidratacion varchar(50) not null
+    actitud varchar(500) null,
+    condicionCorporal varchar(50) null,
+    estadoHidratacion varchar(50) null
 );
 
 alter table examenClinico add foreign key(idConsulta) references consulta(id) on delete restrict on update cascade;
@@ -115,8 +115,8 @@ alter table examenClinico add foreign key(idConsulta) references consulta(id) on
 create table desparasitacion (
     id int auto_increment primary key not null,
     idConsulta int not null,
-    estadoDesparasitacion varchar(50) not null,
-    fechaDesparacitacion timestamp null
+    estadoDesparasitacion varchar(50) null,
+    fechaDesparacitacion date null
 );
 
 alter table desparasitacion add foreign key(idConsulta) references consulta(id) on delete restrict on update cascade;
@@ -124,36 +124,35 @@ alter table desparasitacion add foreign key(idConsulta) references consulta(id) 
 create table constantesFisiologicas (
     id int auto_increment primary key not null,
     idConsulta int not null,
-    tlc int not null,
-    temperatura int not null,
-    fr int not null,
-    fc int not null,
-    pulso int not null,
-    peso int not null
+    tlc int null,
+    temperatura int null,
+    fr int null,
+    fc int null,
+    pulso int null,
+    peso int null
 );
 
 alter table constantesFisiologicas add foreign key(idConsulta) references consulta(id) on delete restrict on update cascade;
 
-create table examenesLaboratorio (
-    id int primary key not null,
-    nombre varchar(50) not null
-);
-
 create table planDiagnostico (
     id int auto_increment primary key not null,
     idConsulta int not null,
-    idExamenesLaboratorio int not null,
-    fecha timestamp not null,
-    resultados varchar(500) null
+    cuadroHematico varchar(500) null,
+    fechaCuadroHematico date null,
+    pacialOrina varchar(500) null,
+    fechaPacialOrina date null,
+    coprologico varchar(500) null,
+    fechaCoprologico date null,
+    coproscopico varchar(500) null,
+    fechaCoproscopico date null
 );
 
 alter table planDiagnostico add foreign key(idConsulta) references consulta(id) on delete restrict on update cascade;
-alter table planDiagnostico add foreign key(idExamenesLaboratorio) references examenesLaboratorio(id) on delete restrict on update cascade;
 
 create table listaProblemas (
     id int auto_increment primary key not null,
-    idConsulta int not null,
-    nombre varchar(50) not null,
+    idConsulta int null,
+    nombre varchar(50) null,
     diagnosticoDiferencial varchar(500) null
 );
 
@@ -162,7 +161,7 @@ alter table listaProblemas add foreign key(idConsulta) references consulta(id) o
 create table citologia (
     id int auto_increment primary key not null,
     idConsulta int not null,
-    resultado varchar(256) not null,
+    resultado varchar(256) null,
     observaciones varchar(500) null
 );
 
@@ -170,14 +169,14 @@ alter table citologia add foreign key(idConsulta) references consulta(id) on del
 
 create table estadosFisicos (
     id int auto_increment primary key not null,
-    nombre varchar(50) not null,
+    nombre varchar(50) null,
     observaciones varchar(500) null
 );
 
 create table estadoFisicoPaciente (
     id int auto_increment primary key not null,
     idConsulta int not null,
-    idEstadosFisicos int not null,
+    idEstadosFisicos int null,
     observaciones varchar(500) null
 );
 
@@ -224,23 +223,44 @@ create table medicamentos (
 create table planTerapeutico (
     id int auto_increment primary key not null,
     idConsulta int not null,
-    tipo varchar(1) not null,
-    idMedicamento int not null,
-    dosisTotal int not null,
-    viaAdministracion varchar(1) not null,
-    frecuencia varchar(30) not null,
-    duracion varchar(30) not null
+    tipo1 varchar(50) null,
+    tipo2 varchar(50) null,
+    tipo3 varchar(50) null,
+    tipo4 varchar(50) null,
+    tipo5 varchar(50) null,
+    medicamento1 varchar(500) null,
+    medicamento2 varchar(500) null,
+    medicamento3 varchar(500) null,
+    medicamento4 varchar(500) null,
+    medicamento5 varchar(500) null,
+    dosisTotal1 varchar(500) null,
+    dosisTotal2 varchar(500) null,
+    dosisTotal3 varchar(500) null,
+    dosisTotal4 varchar(500) null,
+    dosisTotal5 varchar(500) null,
+    viaAdministracion1 varchar(50) null,
+    viaAdministracion2 varchar(50) null,
+    viaAdministracion3 varchar(50) null,
+    viaAdministracion4 varchar(50) null,
+    viaAdministracion5 varchar(50) null,
+    frecuencia1 varchar(30) null,
+    frecuencia2 varchar(30) null,
+    frecuencia3 varchar(30) null,
+    frecuencia4 varchar(30) null,
+    frecuencia5 varchar(30) null,
+    duracion1 varchar(30) null,
+    duracion2 varchar(30) null,
+    duracion3 varchar(30) null,
+    duracion4 varchar(30) null,
+    duracion5 varchar(30) null
 );
 
 alter table planTerapeutico add foreign key(idConsulta) references consulta(id) on delete restrict on update cascade;
-alter table planTerapeutico add foreign key(idMedicamento) references medicamentos(id) on delete restrict on update cascade;
-
 
 create table diagnosticoDefinitivo (
     id int auto_increment primary key not null,
     idConsulta int not null,
-    idHistoriaClinica int not null,
-    diagnosticoDefinitivo varchar(500) not null,
+    diagnosticoDefinitivo varchar(500) null,
     observaciones varchar(500) null
 );
 
@@ -251,7 +271,7 @@ create table historiaClinica (
     id int auto_increment primary key not null,
     fechaHora timestamp,
     idPaciente int not null,
-    fechaEsterilizacion timestamp,
+    fechaEsterilizacion date,
     tipoAlimentacion varchar(20) null,
     habitat varchar(20) null
 );
@@ -297,4 +317,15 @@ insert into tipoIdentificacion (tipo, nombre) values ('CC', 'Cédula de ciudadan
 insert into estadoCita (estado) values ('Programada'), ('Cumplida'), ('Cancelada');
 insert into tipoCita (tipo) values ('General'), ('Especialista'), ('Odontología'), ('No programada');
 insert into usuario (tipoUsuario, identificacion, idtipoIdentificacion, nombres, apellidos, telefono, direccion, correoElectronico,clave) values
-('A', 1000, 9, 'Administrador', 'del sistema', 7700000, 'Carrera 1', 'administrador@empresa.com', md5('1000');
+('A', 1000, 1, 'Administrador', 'del sistema', 7700000, 'Carrera 1', 'administrador@empresa.com', md5('1000');
+insert into especie (nombre) values ('Caninos');
+insert into especie (nombre) values ('Felinos');
+insert into raza (nombre, idEspecie) values ('Criollo', 1);
+insert into raza (nombre, idEspecie) values ('Rottweiller', 1);
+insert into raza (nombre, idEspecie) values ('Pastor Aleman', 1);
+insert into raza (nombre, idEspecie) values ('Boxer', 1);
+insert into raza (nombre, idEspecie) values ('Golden Retriever', 1);
+insert into raza (nombre, idEspecie) values ('Abisino', 2);
+insert into raza (nombre, idEspecie) values ('Asiatico', 2);
+insert into raza (nombre, idEspecie) values ('Bengalí', 2);
+insert into raza (nombre, idEspecie) values ('Balinés', 2);

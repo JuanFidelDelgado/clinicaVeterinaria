@@ -6,11 +6,12 @@
  */
 
 require_once '../../logica/clases/ExamenClinico.php';
+require_once '../../logica/clasesGenericas/ConectorBD.php';
+
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
 
-
-$direccion='location: principal.php?CONTENIDO=presentacion/consulta/consulta.php';
+//$direccion='location: principal.php?CONTENIDO=presentacion/consulta/consulta.php';
 $examen= new ExamenClinico(null, null);
 switch ($_REQUEST['accion']){
     case 'Adicionar':
@@ -33,5 +34,5 @@ switch ($_REQUEST['accion']){
         $examen->eliminar();
         break;
 }
-header('location: principal.php?CONTENIDO=presentacion/consulta/consulta.php')
+//header('location: principal.php?CONTENIDO=presentacion/consulta/consulta.php')
 ?>

@@ -6,6 +6,7 @@
  */
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
+
 $USUARIO= unserialize($_SESSION['usuario']);
 $rol= new Usuario('id', $USUARIO->getId());
 $paciente= new Pacientes('id', $_REQUEST['idPaciente']);

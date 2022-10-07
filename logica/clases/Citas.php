@@ -108,6 +108,12 @@ class Citas {
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
+    public function modificarEstadoCita() {
+        $cadenaSQL="update citas set estadoCita='Cumplida' where id='$this->id'";
+        //echo $cadenaSQL;
+        ConectorBD::ejecutarQuery($cadenaSQL);
+    }
+    
     public function eliminar(){
         $cadenaSQL="delete from citas where id='$this->id'";
         ConectorBD::ejecutarQuery($cadenaSQL);

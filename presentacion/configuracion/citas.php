@@ -8,23 +8,23 @@
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
 $USUARIO= unserialize($_SESSION['usuario']);
+@$paciente=$_REQUEST['idPaciente'];
 $consulta= new Consulta(null, null);
 $rol= new Usuario('id', $USUARIO->getId());
-//$idPaciente=$_REQUEST['idPaciente'];
-echo $_REQUEST['idPaciente'];
-if ($_REQUEST['idPaciente']==null || $_REQUEST['idPaciente']==''){
+
+if ($paciente==null || $paciente==''){
     $historiaClinica= new HistoriaClinica(null, null);
 }else {
-    $historiaClinica= new HistoriaClinica('idPaciente', $_REQUEST['idPaciente']);
+    $historiaClinica= new HistoriaClinica('idPaciente', $paciente);
 }
 
-if ($_REQUEST['idPaciente']=='' || $_REQUEST['idPaciente']==null){
+if ($paciente=='' || $paciente==null){
     $resultado= Citas::getListaEnObjetos(null, "id" );
     $paciente=new Pacientes(null, 'id');
     $usuario=new Usuario(null, null);
 } else {
-    $resultado= Citas::getListaEnObjetos("idPaciente={$_REQUEST['idPaciente']}", "id");
-    $paciente= new Pacientes('id', $_REQUEST['idPaciente']);
+    $resultado= Citas::getListaEnObjetos("idPaciente={$paciente}", "id");
+    $paciente= new Pacientes('id', $paciente);
     $usuario= new Usuario('id', $paciente->getIdUsuario());
 }
 
@@ -49,8 +49,8 @@ for ($i = 0; $i < count($resultado); $i++) {
         $lista.="<td><a href='principal.php?CONTENIDO=presentacion/configuracion/citasFormulario.php&accion=Modificar&id={$citas->getId()}&idPaciente={$paciente->getId()}' title='Modificar'><img src='presentacion/imagenes/update.png'></a>";
         $lista.="</td>";
         if ($rol->getTipoUsuarioEnObjeto()=='Médico' && $citas->getEstadoCita()=='Programada'){
-            //$lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultaActualizar.php&idPaciente={$citas->getIdPaciente()}&idCita={$citas->getId()}&idMedico={$USUARIO->getId()}&idHistoriaClinica={$historiaClinica->getId()}'>Diligenciar consulta</a></td>";
-            $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultas.php&idPaciente={$citas->getIdPaciente()}&idCita={$citas->getId()}&idMedico={$USUARIO->getId()}&idHistoriaClinica={$historiaClinica->getId()}'>Ver consultas del paciente</a></td>";
+            $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultaActualizar.php&idPaciente={$citas->getIdPaciente()}&idCita={$citas->getId()}&idMedico={$USUARIO->getId()}&idHistoriaClinica={$historiaClinica->getId()}'>Diligenciar consulta</a></td>";
+            //$lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consulta.php&idPaciente={$citas->getIdPaciente()}&idCita={$citas->getId()}&idMedico={$USUARIO->getId()}&idHistoriaClinica={$historiaClinica->getId()}'>Diligenciar consulta</a></td>";
         }
     }
     $lista.="</tr>";

@@ -37,7 +37,7 @@ if (isset($_REQUEST['mensaje'])) $mensaje=$_REQUEST['mensaje'];
             <input type="submit" value="Ingresar"/>
             </form>
             <br>
-            <a href="presentacion/configuracion/usuariosFormulario.php?accion=Adicionar">Registrarse</a>
+            <a href="presentacion/configuracion/registroFormulario.php?accion=Adicionar">Registrarse</a>
             <br>
             <!--
             <a href="presentacion/configuracion/usuariosFormulario.php">Registrarse</a>
@@ -54,7 +54,7 @@ if (isset($_REQUEST['mensaje'])) $mensaje=$_REQUEST['mensaje'];
             <tr align="center"><td colspan="3">Consulta veterinaria presencial, servicio a domicilio, cirugías y hospitalización, laboratorio, radiología y ecografía.</td>            </tr>
             <tr>
                 <th colspan="3">
-                    <a href="presentacion/configuracion/usuariosFormulario.php?accion=Adicionar">
+                    <a href="presentacion/configuracion/registroFormulario.php?accion=Adicionar">
                     <img src="presentacion/imagenes/portada/cita-de-control.webp" height="250">
                     </a>
                 </th>
