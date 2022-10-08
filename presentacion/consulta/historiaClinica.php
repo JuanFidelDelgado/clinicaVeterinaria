@@ -17,15 +17,13 @@ $lista='';
 for ($i = 0; $i < count($resultado); $i++) {
     $historiaClinica=$resultado[$i];
     $lista.="<tr>";
-    $lista.="<td>{$historiaClinica->getFechaHora()}</td>";
-    $lista.="<td>{$historiaClinica->getIdPaciente()}</td>";
+    $lista.="<td>{$historiaClinica->getFecha()}</td>";
+    //$lista.="<td>{$historiaClinica->getIdPaciente()}</td>";
     $lista.="<td>{$historiaClinica->getFechaEsterilizacion()}</td>";
     $lista.="<td>{$historiaClinica->getTipoAlimentacion()}</td>";
     $lista.="<td>{$historiaClinica->getHabitat()}</td>";
-    $lista.="<td>";
-            $lista.="<a href='principal.php?CONTENIDO=presentacion/consulta/historiaClinicaFormulario.php&accion=Modificar&id={$historiaClinica->getId()}&idPaciente={$historiaClinica->getIdPaciente()}' title='Modificar'><img src='presentacion/imagenes/update.png'></a>";
-        //$lista.="<img src='presentacion/imagenes/delete.png' onClick='eliminar({$historiaClinica->getId()})' title='Eliminar'>";
-    $lista.="</td>";
+    $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/historiaClinicaFormulario.php&accion=Modificar&id={$historiaClinica->getId()}&idPaciente={$historiaClinica->getIdPaciente()}' title='Modificar'><img src='presentacion/imagenes/update.png'></a></td>";
+    $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultas.php&idHistoria={$historiaClinica->getId()}&idPaciente={$historiaClinica->getIdPaciente()}' title='Ver consultas'>Ver consultas</a></td>";
     $lista.="</tr>";
 }
 ?>
@@ -34,7 +32,7 @@ for ($i = 0; $i < count($resultado); $i++) {
 <p></p>
 <table border="1" align="center">
     <tr>
-        <th>Fecha Apertura</th><th>Paciente</th><th>Fecha Esterilización</th><th>Tipo Alimentación</th><th>Habitat</th>
+        <th>Fecha Apertura</th><th>Fecha Esterilización</th><th>Tipo Alimentación</th><th>Habitat</th><th>Modificar</th><th>Historial de consultas</th>
         <?php
         if ($cuenta=='0') {
         ?>

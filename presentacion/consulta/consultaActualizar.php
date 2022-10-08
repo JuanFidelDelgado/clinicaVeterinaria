@@ -9,7 +9,11 @@
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
 
 $citas= new Citas('id', $_REQUEST['idCita']);
-$citas->modificarEstadoCita();
+$usuario= new Usuario('id', $_REQUEST['idMedico']);
+$paciente= new Pacientes('id', $_REQUEST['idPaciente']);
+$historiaClinica= new HistoriaClinica('id', $_REQUEST['idHistoriaClinica']);
+
+//$citas->modificarEstadoCita();
 $consulta= new Consulta(null, null);
 $consulta->setFecha(date('Y-m-d'));
 $consulta->setIdCita($_REQUEST['idCita']);

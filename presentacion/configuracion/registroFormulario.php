@@ -34,7 +34,10 @@ if (isset($_REQUEST['id'])) {
                 <form name="formulario" method="post" action="registroActualizar.php">
                     <table border="0" align="center">
                         <tr><th>Identificación</th><td><input type="text" name="identificacion" size="50" maxlength="50" value="<?= $usuario->getIdentificacion() ?>" required></td></tr>
-                        <tr><th>Tipo Identificación</th><td><select name="tipoIdentificacion"><?= TipoIdentificacion::getListaEnOptions($usuario->getTipoIdentificacion()) ?>"></select></td></tr>
+                        <tr><th>Tipo Identificación</th><td><input type="radio" name="tipoIdentificacion" value="1">Cédula de cidadanía</td></tr>
+        <tr><th></th><td><input type="radio" name="tipoIdentificacion" value="2">Tarjeta de identidad</td></tr>
+            <tr><th></th><td><input type="radio" name="tipoIdentificacion" value="3">Cédula de extranjería</td></tr>
+            <tr><th></th><td><input type="radio" name="tipoIdentificacion" value="4">Identificación tributaria</td></tr>
                         <tr><th>Nombres</th><td><input type="text" name="nombres" value="<?= $usuario->getNombres() ?>" required></td></tr>
                         <tr><th>Apellidos</th><td><input type="text" name="apellidos" size="50" maxlength="50" value="<?= $usuario->getApellidos() ?>"></td></tr>
                         <tr><th>Teléfono</th><td><input type="text" name="telefono" size="50" maxlength="50" value="<?= $usuario->getTelefono() ?>" required></td></tr>

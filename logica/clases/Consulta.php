@@ -90,7 +90,7 @@ class Consulta {
         $cadenaSQL= "insert into consulta (idCita, idMedico, idPaciente, fecha, idHistoriaClinica) "
                 . "values ('$this->idCita', '$this->idMedico', '$this->idPaciente', '$this->fecha', "
                 . "'$this->idHistoriaClinica')";
-        //echo $cadenaSQL;
+        echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     

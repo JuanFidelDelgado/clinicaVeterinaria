@@ -16,6 +16,7 @@ $USUARIO= unserialize($_SESSION['usuario']);
 
 $usuario= new Usuario(null, null);
 $paciente= new Pacientes(null, null);
+$direccion= "principal.php?CONTENIDO=presentacion/configuracion/pacientes.php&idUsuario={$USUARIO->getId()}";
 switch ($_REQUEST['accion']){
     case 'Adicionar':
         //Procedimiento para subir el archivo        
@@ -35,6 +36,7 @@ switch ($_REQUEST['accion']){
         $paciente->setColor($_REQUEST['color']);
         $paciente->setSeñasParticulares($_REQUEST['señasParticulares']);
         $paciente->guardar();
+        header('location: '.$direccion);
         break;
     case 'Modificar':
         $paciente->setId($_REQUEST['id']);
@@ -55,11 +57,13 @@ switch ($_REQUEST['accion']){
         $paciente->setColor($_REQUEST['color']);
         $paciente->setSeñasParticulares($_REQUEST['señasParticulares']);
         $paciente->modificar();
+        header('location: '.$direccion);
         break;
     case 'Eliminar':
         $paciente->setId($_REQUEST['id']);
         $paciente->eliminar();
+        header('location: '.$direccion);
         break;
 }
-header('location: principal.php?CONTENIDO=presentacion/configuracion/pacientes.php')
+//header('location: principal.php?CONTENIDO=presentacion/configuracion/pacientes.php')
 ?>

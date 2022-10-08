@@ -92,7 +92,7 @@ alter table citas add foreign key(idPaciente) references paciente(id) on delete 
 create table consulta (
     id int auto_increment primary key not null,
     fecha date, 
-    idCitas int not null,
+    idCita int not null,
     idMedico int not null,
     idPaciente int not null,
     idHistoriaClinica int not null
@@ -204,13 +204,13 @@ create table enfermedades (
 create table tipoAlimentacion (
     id int auto_increment primary key not null,
     tipo varchar(20) not null,
-    observaciones varchar(50) null
+    observaciones varchar(500) null
 );
 
 create table habitat (
     id int auto_increment primary key not null,
     tipo varchar(20) not null,
-    observaciones varchar(50) null
+    observaciones varchar(500) null
 );
 
 create table medicamentos (
@@ -269,7 +269,7 @@ alter table diagnosticoDefinitivo add foreign key(idConsulta) references consult
 
 create table historiaClinica (
     id int auto_increment primary key not null,
-    fechaHora timestamp,
+    fecha date,
     idPaciente int not null,
     fechaEsterilizacion date,
     tipoAlimentacion varchar(20) null,
@@ -316,8 +316,7 @@ alter table consulta add foreign key(idHistoriaClinica) references historiaClini
 insert into tipoIdentificacion (tipo, nombre) values ('CC', 'Cédula de ciudadanía'), ('CE', 'Cédula de extranjería'), ('TI', 'Tarjeta de identidad'), ('NIT', 'Identificación tributaria');
 insert into estadoCita (estado) values ('Programada'), ('Cumplida'), ('Cancelada');
 insert into tipoCita (tipo) values ('General'), ('Especialista'), ('Odontología'), ('No programada');
-insert into usuario (tipoUsuario, identificacion, idtipoIdentificacion, nombres, apellidos, telefono, direccion, correoElectronico,clave) values
-('A', 1000, 1, 'Administrador', 'del sistema', 7700000, 'Carrera 1', 'administrador@empresa.com', md5('1000');
+INSERT INTO `usuario`(`tipoUsuario`, `identificacion`, `tipoIdentificacion`, `nombres`, `apellidos`, `telefono`, `direccion`, `correoElectronico`, `clave`, `tarjetaProfesional`) VALUES ('A','1000','1','Juan Fidel','Delgado González','310000000','Calle 1 # 11 - 91','juan@empresa.com',md5('1000'),'');
 insert into especie (nombre) values ('Caninos');
 insert into especie (nombre) values ('Felinos');
 insert into raza (nombre, idEspecie) values ('Criollo', 1);
@@ -329,3 +328,11 @@ insert into raza (nombre, idEspecie) values ('Abisino', 2);
 insert into raza (nombre, idEspecie) values ('Asiatico', 2);
 insert into raza (nombre, idEspecie) values ('Bengalí', 2);
 insert into raza (nombre, idEspecie) values ('Balinés', 2);
+insert into tipoAlimentacion (tipo, observaciones) values ('Casera', 'El paciente consume la alimentación del hogar');
+insert into tipoAlimentacion (tipo, observaciones) values ('Especializada', 'El paciente consume únicamente alimento especializado');
+insert into tipoAlimentacion (tipo, observaciones) values ('Mixta', 'El paciente consume alimento casero y especializado');
+insert into tipoAlimentacion (tipo, observaciones) values ('Medicada', 'El paciente consume alimento medicado únicamente');
+insert into habitat (tipo, observaciones) values ('Hogar', 'EL paciente habita con sus propietarios');
+insert into habitat (tipo, observaciones) values ('Taller', 'El paciente habita en un taller de trabajo');
+insert into habitat (tipo, observaciones) values ('Lote', 'El paciente habita en lote a cielo abierto');
+insert into habitat (tipo, observaciones) values ('Silvestre', 'El paciente no tiene lugar de habitación fijo');

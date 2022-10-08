@@ -21,6 +21,7 @@ require_once './logica/clases/Pacientes.php';
 require_once './logica/clases/Razas.php';
 require_once './logica/clases/TipoAlimentacion.php';
 require_once './logica/clases/TipoUsuario.php';
+require_once './logica/clases/TipoIdentificacion.php';
 require_once './logica/clases/Usuario.php';
 require_once './logica/clases/Vacunas.php';
 require_once './logica/clases/ExamenClinico.php';

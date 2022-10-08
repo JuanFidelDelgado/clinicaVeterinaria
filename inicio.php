@@ -46,7 +46,7 @@ if ($USUARIO->getTipoUsuarioEnObjeto()=='Administrador'){
     "<h3></h3>";
     $lista.="<tr>";
     $lista.="<th><a href='principal.php?CONTENIDO=presentacion/configuracion/pacientes.php&idUsuario={$USUARIO->getId()}'><img src='presentacion/imagenes/species.png' width='200' height='200'><br>MIS MASCOTAS</a></th>";
-    $lista.="<th><a href='principal.php?CONTENIDO=presentacion/configuracion/citas.php'><img src='presentacion/imagenes/calendar.png' width='200' height='200'><br>CITAS</a></th>";
+    //$lista.="<th><a href='principal.php?CONTENIDO=presentacion/configuracion/citas.php'><img src='presentacion/imagenes/calendar.png' width='200' height='200'><br>CITAS</a></th>";
     $lista.="</tr>";
 } 
 ?>

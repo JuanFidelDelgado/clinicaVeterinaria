@@ -19,7 +19,7 @@ class TipoIdentificacion {
         if ($campo != null){
             if (!is_array($campo)){
                 if ($valor=='') $valor='null';  
-                $cadenaSQL="select id, tipo nombre from tipoIdentificacion where $campo=$valor";
+                $cadenaSQL="select id, tipo, nombre from tipoIdentificacion where $campo=$valor";
                 //echo $cadenaSQL;
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];  

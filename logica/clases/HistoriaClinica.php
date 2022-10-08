@@ -12,7 +12,7 @@
  */
 class HistoriaClinica {
     private $id;
-    private $fechaHora;
+    private $fecha;
     private $idPaciente;
     private $fechaEsterilizacion;
     private $tipoAlimentacion;
@@ -21,14 +21,14 @@ class HistoriaClinica {
     public function __construct($campo, $valor) {
         if ($campo != null){
             if (!is_array($campo)){
-                $cadenaSQL="select id, fechaHora, idPaciente, fechaEsterilizacion, tipoAlimentacion, habitat from historiaClinica where $campo=$valor";
+                $cadenaSQL="select id, fecha, idPaciente, fechaEsterilizacion, tipoAlimentacion, habitat from historiaClinica where $campo=$valor";
                 //echo $cadenaSQL.'<p>';
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];  
             }
             if (is_array($campo)) {
                 $this->id=$campo['id'];
-                $this->fechaHora=$campo['fechaHora'];
+                $this->fecha=$campo['fecha'];
                 $this->idPaciente=$campo['idPaciente'];
                 $this->fechaEsterilizacion=$campo['fechaEsterilizacion'];
                 $this->tipoAlimentacion=$campo['tipoAlimentacion'];
@@ -41,8 +41,8 @@ class HistoriaClinica {
         return $this->id;
     }
 
-    public function getFechaHora() {
-        return $this->fechaHora;
+    public function getFecha() {
+        return $this->fecha;
     }
 
     public function getIdPaciente() {
@@ -60,13 +60,13 @@ class HistoriaClinica {
     public function getHabitat() {
         return $this->habitat;
     }
-
+        
     public function setId($id): void {
         $this->id = $id;
     }
 
-    public function setFechaHora($fechaHora): void {
-        $this->fechaHora = $fechaHora;
+    public function setFecha($fecha): void {
+        $this->fecha = $fecha;
     }
 
     public function setIdPaciente($idPaciente): void {
@@ -82,18 +82,18 @@ class HistoriaClinica {
     }
 
     public function setHabitat($habitat): void {
-        $this->tipohabitat = $habitat;
+        $this->habitat = $habitat;
     }
 
     public function guardar() {
-        $cadenaSQL="insert into historiaClinica (fechaHora, idPaciente, fechaEsterilizacion, tipoAlimentacion, habitat) values "
-                . "('$this->fechaHora', '$this->idPaciente', '$this->fechaEsterilizacion', '$this->tipoAlimentacion', '$this->habitat')";
+        $cadenaSQL="insert into historiaClinica (fecha, idPaciente, fechaEsterilizacion, tipoAlimentacion, habitat) values "
+                . "('$this->fecha', '$this->idPaciente', '$this->fechaEsterilizacion', '$this->tipoAlimentacion', '$this->habitat')";
         echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public function modificar() {
-        $cadenaSQL="update historiaClinica set fechaHora='$this->fechaHora', idPaciente='$this->idPaciente', fechaEsterilizacion='$this->fechaEsterilizacion', "
+        $cadenaSQL="update historiaClinica set fecha='$this->fecha', idPaciente='$this->idPaciente', fechaEsterilizacion='$this->fechaEsterilizacion', "
                 . "tipoAlimentacion='$this->tipoAlimentacion', habitat='prueba' where id='$this->id'";
         echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);

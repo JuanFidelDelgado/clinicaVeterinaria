@@ -11,7 +11,7 @@ if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acce
 $historiaClinica= new HistoriaClinica(null, null);
 switch ($_REQUEST['accion']){
     case 'Adicionar':
-        $historiaClinica->setFechaHora(date('Y-m-d h:i'));
+        $historiaClinica->setFecha(date('Y-m-d h:i'));
         $historiaClinica->setIdPaciente($_REQUEST['idPaciente']);
         $historiaClinica->setFechaEsterilizacion($_REQUEST['fechaEsterilizacion']);
         $historiaClinica->setTipoAlimentacion($_REQUEST['tipoAlimentacion']);
@@ -19,7 +19,7 @@ switch ($_REQUEST['accion']){
         $historiaClinica->guardar();
         break;
     case 'Modificar':
-        $historiaClinica->setFechaHora(date('Y-m-d h:i'));
+        $historiaClinica->setFecha(date('Y-m-d h:i'));
         $historiaClinica->setIdPaciente($_REQUEST['idPaciente']);
         $historiaClinica->setFechaEsterilizacion($_REQUEST['fechaEsterilizacion']);
         $historiaClinica->setTipoAlimentacion($_REQUEST['tipoAlimentacion']);

@@ -65,6 +65,10 @@ class Usuario {
         return $this->tipoIdentificacion;
     }
     
+    public function getTipoIdentificacionEnObjeto(){
+        return new TipoIdentificacion('id', $this->tipoIdentificacion);
+    }
+    
     public function getNombres() {
         return $this->nombres;
     }

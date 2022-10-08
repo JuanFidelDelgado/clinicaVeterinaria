@@ -6,31 +6,25 @@
  */
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
-
 $USUARIO= unserialize($_SESSION['usuario']);
-$rol= new Usuario('id', $USUARIO->getId());
 $paciente= new Pacientes('id', $_REQUEST['idPaciente']);
-$cita= new Citas('id', $_REQUEST['idCita']);
-$medico= new Usuario('id', $_REQUEST['idMedico']);
-//$historiaClinica= new HistoriaClinica('id', $_REQUEST['idHistoriaClinica']);
 
-$resultado= Consulta::getListaEnObjetos("idPaciente={$_REQUEST['idPaciente']}", "idPaciente");
-$cuenta= count($resultado);
+$resultado= Consulta::getListaEnObjetos("idHistoriaClinica={$_REQUEST['idHistoria']}", "id");
 
 $lista='';
 for ($i = 0; $i < count($resultado); $i++) {
-    $consultas=$resultado[$i];
+    $consulta=$resultado[$i];
+    $cita= new Citas('id', $consulta->getIdCita());
+    $medico= new Usuario('id', $consulta->getIdMedico());
     $lista.="<tr>";
-    $lista.="<td>{$consultas->getId()}</td>";
+    $lista.="<td>{$consulta->getId()}</td>";
     $lista.="<td>{$cita->getFecha()} - {$cita->getHora()}</td>";
     $lista.="<td>{$medico->getNombres()} - {$medico->getApellidos()}</td>";
     $lista.="<td>{$cita->getEstadoCita()}</td>";
-    //$lista.="<td>";
-    if ($rol->getTipoUsuarioEnObjeto()=='Médico' && $cita->getEstadoCita()=='Programada'){
-            $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consulta.php&idPaciente={$cita->getIdPaciente()}&idCita={$cita->getId()}&idMedico={$USUARIO->getId()}&idHistoriaClinica={$historiaClinica->getId()}'>Diligenciar consulta</a></td>";
-        }
-    //$lista.="</td>";
-    $lista.="</tr>";
+    if ($cita->getEstadoCita()=='Cumplida') {
+        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consulta.php&idPaciente={$consulta->getIdPaciente()}&idCita={$consulta->getIdCita()}&idMedico={$consulta->getIdMedico()}&idHistoriaClinica={$consulta->getIdHistoriaClinica()}'>Ver reporte de consulta</a></td>";
+    }
+    $lista.="</<tr>";
 }
 ?>
 
@@ -38,7 +32,7 @@ for ($i = 0; $i < count($resultado); $i++) {
 <p></p>
 <table border="1" align="center">
     <tr>
-        <th>IdConsulta</th><th>Fecha Consulta</th><th>Médico</th><th>Estado Consulta</th><th></th>        
+        <th>IdConsulta</th><th>Fecha Consulta</th><th>Médico</th><th>Estado Consulta</th><th>Ver Consulta</th>        
     <?=$lista?>
 </table>
 

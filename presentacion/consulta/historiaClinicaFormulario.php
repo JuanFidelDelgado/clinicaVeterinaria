@@ -23,7 +23,7 @@ if (isset($_REQUEST['id'])) {
     <table border="0">
         <tr><th>Fecha Esterilización</th><td><input type="date" name="fechaEsterilizacion" value="<?= $historiaClinica->getFechaEsterilizacion() ?>"></td></tr>
         <tr><th>Tipo Alimentación</th><td><select name="tipoAlimentacion"><?= TipoAlimentacion::getListaEnOptions($historiaClinica->getTipoAlimentacion()) ?>"</select></td></tr>
-        <tr><th>Habitat</th><td><select name="habitat"><?= Habitat::getListaEnOptions($historiaClinica->getHabitat()) ?>"</select></td></tr>
+        <tr><th>Hábitat</th><td><select name="habitat"><?= Habitat::getListaEnOptions($historiaClinica->getHabitat()) ?>"</select></td></tr>
     </table><p>
     
     <input type="hidden" name="idPaciente" value="<?= $_REQUEST['idPaciente']?>"/>
