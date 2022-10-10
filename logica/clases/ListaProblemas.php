@@ -6,30 +6,28 @@
  */
 
 /**
- * Description of ExamenClinico
+ * Description of ListaProblemas
  *
  * @author adora
  */
-class ExamenClinico {
+class ListaProblemas {
     private $id;
     private $idConsulta;
-    private $actitud;
-    private $condicionCorporal;
-    private $estadoHidratacion;
+    private $nombre;
+    private $diagnosticoDiferencial;
     
     public function __construct($campo, $valor) {
         if ($campo != null){
             if (!is_array($campo)){
-                $cadenaSQL="select id, idConsulta, actitud, condicionCorporal, estadoHidratacion from examenClinico where $campo=$valor";
+                $cadenaSQL="select id, idConsulta, nombre, diagnosticoDiferencial from listaProblemas where $campo=$valor";
                 echo $cadenaSQL.'<p>';
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];
             }  
             $this->id=$campo['id'];
             $this->idConsulta=$campo['idConsulta'];
-            $this->actitud=$campo['actitud'];
-            $this->condicionCorporal=$campo['condicionCorporal'];
-            $this->estadoHidratacion=$campo['estadoHidratacion'];
+            $this->nombre=$campo['nombre'];
+            $this->diagnosticoDiferencial=$campo['diagnosticoDiferencial'];
         }
     }
     
@@ -45,18 +43,14 @@ class ExamenClinico {
         return new Consulta('id', $this->idConsulta);
     }
 
-    public function getActitud() {
-        return $this->actitud;
+    public function getNombre() {
+        return $this->nombre;
     }
 
-    public function getCondicionCorporal() {
-        return $this->condicionCorporal;
+    public function getDiagnosticoDiferencial() {
+        return $this->diagnosticoDiferencial;
     }
-
-    public function getEstadoHidratacion() {
-        return $this->estadoHidratacion;
-    }
-
+    
     public function setId($id): void {
         $this->id = $id;
     }
@@ -65,34 +59,29 @@ class ExamenClinico {
         $this->idConsulta = $idConsulta;
     }
 
-    public function setActitud($actitud): void {
-        $this->actitud = $actitud;
+    public function setNombre($nombre): void {
+        $this->nombre = $nombre;
     }
 
-    public function setCondicionCorporal($condicionCorporal): void {
-        $this->condicionCorporal = $condicionCorporal;
+    public function setDiagnosticoDiferencial($diagnosticoDiferencial): void {
+        $this->diagnosticoDiferencial = $diagnosticoDiferencial;
     }
 
-    public function setEstadoHidratacion($estadoHidratacion): void {
-        $this->estadoHidratacion = $estadoHidratacion;
-    }
-    
     public function guardar() {
-        $cadenaSQL="insert into examenClinico (idConsulta, actitud, condicionCorporal, estadoHidratacion) values "
-                . "('$this->idConsulta', '$this->actitud', '$this->condicionCorporal', '$this->estadoHidratacion')";
+        $cadenaSQL="insert into listaProblemas (idConsulta, nombre, diagnosticoDiferencial) values "
+                . "('$this->idConsulta', '$this->nombre', '$this->diagnosticoDiferencial')";
         echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public function modificar() {
-        $cadenaSQL="update examenClinico set idConsulta='$this->idConsulta', actitud='$this->actitud', condicionCorporal='$this->condicionCorporal', "
-                . "estadoHidratacion='$this->estadoHidratacion' where id='$this->id'";
+        $cadenaSQL="update listaProblemas set idConsulta='$this->idConsulta', nombre='$this->nombre', diagnosticoDiferencial='$this->diagnosticoDiferencial' where id='$this->id'";
         echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public function eliminar(){
-        $cadenaSQL="delete from examenClinico where id='$this->id'";
+        $cadenaSQL="delete from listaProblemas where id='$this->id'";
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
@@ -101,17 +90,17 @@ class ExamenClinico {
         else $filtro=" where $filtro";
         if ($orden==null || $orden=='') $orden='';
         else $orden=" order by $orden";
-        $cadenaSQL="select id, idConsulta, actitud, condicionCorporal, estadoHidratacion from examenClinico $filtro $orden";
+        $cadenaSQL="select id, idConsulta, nombre, diagnosticoDiferencial from listaProblemas $filtro $orden";
         //echo $cadenaSQL;
         return ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public static function getListaEnObjetos($filtro, $orden) {
-        $resultado= ExamenClinico::getLista($filtro, $orden);
+        $resultado= ListaProblemas::getLista($filtro, $orden);
         $lista=array();
         for ($i = 0; $i < count($resultado); $i++) {
-            $examenClinico= new ExamenClinico($resultado[$i], null);
-            $lista[$i]=$examenClinico;
+            $listaProblemas= new ListaProblemas($resultado[$i], null);
+            $lista[$i]=$listaProblemas;
         }
         return $lista;
     }

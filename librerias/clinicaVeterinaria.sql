@@ -116,7 +116,7 @@ create table desparasitacion (
     id int auto_increment primary key not null,
     idConsulta int not null,
     estadoDesparasitacion varchar(50) null,
-    fechaDesparacitacion date null
+    fechaDesparasitacion date null
 );
 
 alter table desparasitacion add foreign key(idConsulta) references consulta(id) on delete restrict on update cascade;
@@ -139,8 +139,8 @@ create table planDiagnostico (
     idConsulta int not null,
     cuadroHematico varchar(500) null,
     fechaCuadroHematico date null,
-    pacialOrina varchar(500) null,
-    fechaPacialOrina date null,
+    parcialOrina varchar(500) null,
+    fechaParcialOrina date null,
     coprologico varchar(500) null,
     fechaCoprologico date null,
     coproscopico varchar(500) null,

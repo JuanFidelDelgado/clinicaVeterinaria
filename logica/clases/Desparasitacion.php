@@ -6,30 +6,28 @@
  */
 
 /**
- * Description of ExamenClinico
+ * Description of Desparasitacion
  *
  * @author adora
  */
-class ExamenClinico {
+class Desparasitacion {
     private $id;
     private $idConsulta;
-    private $actitud;
-    private $condicionCorporal;
-    private $estadoHidratacion;
+    private $estadoDesparasitacion;
+    private $fechaDesparasitacion;
     
     public function __construct($campo, $valor) {
         if ($campo != null){
             if (!is_array($campo)){
-                $cadenaSQL="select id, idConsulta, actitud, condicionCorporal, estadoHidratacion from examenClinico where $campo=$valor";
+                $cadenaSQL="select id, idConsulta, estadoDesparasitacion, fechaDesparasitacion from desparasitacion where $campo=$valor";
                 echo $cadenaSQL.'<p>';
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];
             }  
             $this->id=$campo['id'];
             $this->idConsulta=$campo['idConsulta'];
-            $this->actitud=$campo['actitud'];
-            $this->condicionCorporal=$campo['condicionCorporal'];
-            $this->estadoHidratacion=$campo['estadoHidratacion'];
+            $this->estadoDesparasitacion=$campo['estadoDesparasitacion'];
+            $this->fechaDesparasitacion=$campo['fechaDesparasitacion'];
         }
     }
     
@@ -45,18 +43,14 @@ class ExamenClinico {
         return new Consulta('id', $this->idConsulta);
     }
 
-    public function getActitud() {
-        return $this->actitud;
+    public function getEstadoDesparasitacion() {
+        return $this->estadoDesparasitacion;
     }
 
-    public function getCondicionCorporal() {
-        return $this->condicionCorporal;
+    public function getFechaDesparasitacion() {
+        return $this->fechaDesparasitacion;
     }
-
-    public function getEstadoHidratacion() {
-        return $this->estadoHidratacion;
-    }
-
+    
     public function setId($id): void {
         $this->id = $id;
     }
@@ -65,34 +59,30 @@ class ExamenClinico {
         $this->idConsulta = $idConsulta;
     }
 
-    public function setActitud($actitud): void {
-        $this->actitud = $actitud;
+    public function setEstadoDesparasitacion($estadoDesparasitacion): void {
+        $this->estadoDesparasitacion = $estadoDesparasitacion;
     }
 
-    public function setCondicionCorporal($condicionCorporal): void {
-        $this->condicionCorporal = $condicionCorporal;
-    }
-
-    public function setEstadoHidratacion($estadoHidratacion): void {
-        $this->estadoHidratacion = $estadoHidratacion;
+    public function setFechaDesparasitacion($fechaDesparasitacion): void {
+        $this->fechaDesparasitacion = $fechaDesparasitacion;
     }
     
     public function guardar() {
-        $cadenaSQL="insert into examenClinico (idConsulta, actitud, condicionCorporal, estadoHidratacion) values "
-                . "('$this->idConsulta', '$this->actitud', '$this->condicionCorporal', '$this->estadoHidratacion')";
+        $cadenaSQL="insert into desparasitacion (idConsulta, estadoDesparasitacion, fechaDesparasitacion) values "
+                . "('$this->idConsulta', '$this->estadoDesparasitacion', '$this->fechaDesparasitacion')";
         echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public function modificar() {
-        $cadenaSQL="update examenClinico set idConsulta='$this->idConsulta', actitud='$this->actitud', condicionCorporal='$this->condicionCorporal', "
-                . "estadoHidratacion='$this->estadoHidratacion' where id='$this->id'";
+        $cadenaSQL="update desparasitacion set idConsulta='$this->idConsulta', estadoDesparasitacion='$this->estadoDesparasitacion', fechaDesparasitacion='$this->fechaDesparasitacion', "
+                . "estadoDesparasitacion='$this->estadoDesparasitacion' where id='$this->id'";
         echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public function eliminar(){
-        $cadenaSQL="delete from examenClinico where id='$this->id'";
+        $cadenaSQL="delete from desparasitacion where id='$this->id'";
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
@@ -101,18 +91,19 @@ class ExamenClinico {
         else $filtro=" where $filtro";
         if ($orden==null || $orden=='') $orden='';
         else $orden=" order by $orden";
-        $cadenaSQL="select id, idConsulta, actitud, condicionCorporal, estadoHidratacion from examenClinico $filtro $orden";
+        $cadenaSQL="select id, idConsulta, estadoDesparasitacion, fechaDesparasitacion from desparasitacion $filtro $orden";
         //echo $cadenaSQL;
         return ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public static function getListaEnObjetos($filtro, $orden) {
-        $resultado= ExamenClinico::getLista($filtro, $orden);
+        $resultado= Desparasitacion::getLista($filtro, $orden);
         $lista=array();
         for ($i = 0; $i < count($resultado); $i++) {
-            $examenClinico= new ExamenClinico($resultado[$i], null);
-            $lista[$i]=$examenClinico;
+            $desparasitacion= new Desparasitacion($resultado[$i], null);
+            $lista[$i]=$desparasitacion;
         }
         return $lista;
     }
 }
+
