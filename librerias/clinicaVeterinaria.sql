@@ -98,7 +98,7 @@ create table consulta (
     idHistoriaClinica int not null
 );
 
-alter table consulta add foreign key(idCitas) references citas(id) on delete restrict on update cascade;
+alter table consulta add foreign key(idCita) references citas(id) on delete restrict on update cascade;
 alter table consulta add foreign key(idMedico) references usuario(id) on delete restrict on update cascade;
 alter table consulta add foreign key(idPaciente) references paciente(id) on delete restrict on update cascade;
 
@@ -317,6 +317,7 @@ insert into tipoIdentificacion (tipo, nombre) values ('CC', 'Cédula de ciudadan
 insert into estadoCita (estado) values ('Programada'), ('Cumplida'), ('Cancelada');
 insert into tipoCita (tipo) values ('General'), ('Especialista'), ('Odontología'), ('No programada');
 INSERT INTO `usuario`(`tipoUsuario`, `identificacion`, `tipoIdentificacion`, `nombres`, `apellidos`, `telefono`, `direccion`, `correoElectronico`, `clave`, `tarjetaProfesional`) VALUES ('A','1000','1','Juan Fidel','Delgado González','310000000','Calle 1 # 11 - 91','juan@empresa.com',md5('1000'),'');
+INSERT INTO `usuario`(`tipoUsuario`, `identificacion`, `tipoIdentificacion`, `nombres`, `apellidos`, `telefono`, `direccion`, `correoElectronico`, `clave`, `tarjetaProfesional`) VALUES ('M','2000','1','Juan Fidel','Delgado González','310000000','Calle 1 # 11 - 91','juan@empresa.com',md5('2000'),'123456');
 insert into especie (nombre) values ('Caninos');
 insert into especie (nombre) values ('Felinos');
 insert into raza (nombre, idEspecie) values ('Criollo', 1);
