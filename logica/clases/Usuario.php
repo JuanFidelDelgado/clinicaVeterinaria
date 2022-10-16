@@ -169,6 +169,13 @@ class Usuario {
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
+    public function errorCambiarClave() {
+        //if (strlen($this->clave)<32) $this->clave=md5($this->clave);
+        $cadenaSQL="Las claves no corresponden";
+        echo $cadenaSQL;
+        //ConectorBD::ejecutarQuery($cadenaSQL);
+    }
+    
     public function eliminar(){
         $cadenaSQL="delete from usuario where id='$this->id'";
         echo $cadenaSQL;

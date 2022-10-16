@@ -15,6 +15,9 @@ $paciente= new Pacientes('id', $_REQUEST['idPaciente']);
 $usuario= new Usuario('id', $paciente->getIdUsuario());
 $cita= new Citas('id', $_REQUEST['idCita']);
 $consulta= new Consulta('idCita', $_REQUEST['idCita']);
+echo $consulta->getId();
+//$examen= new ExamenClinico('idConsulta', $consulta);
+//echo $examen->getActitud();
 
 $titulo='Adicionar';
 if (isset($_REQUEST['id'])) {
@@ -103,7 +106,7 @@ if (isset($_REQUEST['id'])) {
             </th>
         </tr>
         <tr>
-            <th>T.LI.C</th><td><input type="text" name="tlc" value="" size="10"/></td>
+            <th>T.LI.C</th><td><input type="text" name="tlc" value="<?= $constantesFisiologicas->get ?>" size="10"/></td>
             <th>TEMPERATURA</th><td><input type="text" name="temperatura" value="" size="10"/></td>
             <th>F.R</th><td><input type="text" name="fr" value="" size="10"/></td>            
         </tr>

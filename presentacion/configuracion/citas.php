@@ -67,9 +67,6 @@ for ($i = 0; $i < count($resultado); $i++) {
     </tr>
     <?=$lista?>
 </table>
-<form  name="abrirConsulta" method="post" action="">
-    <input type="hidden" name="idCita" value="<?= $citas->getId() ?>">
-</form>
 <script type="text/javascript">
 function eliminar(id){
     var respuesta=confirm("¿Está seguro de eliminar este registro?");

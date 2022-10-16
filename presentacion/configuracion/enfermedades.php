@@ -5,8 +5,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
  */
 
-require_once '../../logica/clasesGenericas/ConectorBD.php';
-require_once '../../logica/clases/Enfermedades.php';
+//require_once '../../logica/clasesGenericas/ConectorBD.php';
+//require_once '../../logica/clases/Enfermedades.php';
 
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
@@ -34,14 +34,13 @@ for ($i = 0; $i < count($resultado); $i++) {
     <table border="0" align="center">
         <tr>
             <th>Buscar:</th><th><input type="text" name="parametro" value="" /></th><th><input type="submit" value="Buscar"/></th>
-            <th><a href="../../principal.php?CONTENIDO=inicio.php" name="Home" title="Home"><img src='../imagenes/home.png' title='Home'></a></th>
         </tr>
     </table>
 </form>
 <p></p>
 <table border="1" align="center">
     <tr>
-        <th>Nombre</th><th>Descripción</th><th><a href="enfermedadesFormulario.php?accion=Adicionar" name="Adicionar" title="Adicionar"><img src='../imagenes/add.png' title='Adicionar'></a></th>
+        <th>Nombre</th><th>Descripción</th><th><a href="principal.php?CONTENIDO=presentacion/configuracion/enfermedadesFormulario.php&accion=Adicionar" name="Adicionar" title="Adicionar"><img src='presentacion/imagenes/add.png' title='Adicionar'></a></th>
     </tr>
     <?=$lista?>
     

@@ -5,11 +5,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
  */
 
-require_once '../../logica/clasesGenericas/ConectorBD.php';
-require_once '../../logica/clases/Usuario.php';
-require_once '../../logica/clases/TipoUsuario.php';
-require_once '../../logica/clases/Enfermedades.php';
-
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
 
@@ -23,7 +18,7 @@ if (isset($_REQUEST['id'])) {
 ?>
 
 <h3><?= strtoupper($titulo) ?> ENFERMEDAD</h3>
-<form name="formulario" method="post" action="enfermedadesActualizar.php">
+<form name="formulario" method="post" action="principal.php?CONTENIDO=presentacion/configuracion/enfermedadesActualizar.php">
     <table border="0">
         <tr><th>Nombre</th><td><input type="text" name="nombre" size="50" maxlength="50" value="<?= $enfermedades->getNombre() ?>" required></td></tr>
         <tr><th>Descripcion</th><td><input type="text" name="descripcion" size="50" maxlength="500" value="<?= $enfermedades->getDescripcion() ?>"></td></tr>

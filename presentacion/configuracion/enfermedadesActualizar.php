@@ -5,10 +5,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
  */
 
-require_once '../../logica/clasesGenericas/ConectorBD.php';
-require_once '../../logica/clases/Enfermedades.php';
-
-
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
 

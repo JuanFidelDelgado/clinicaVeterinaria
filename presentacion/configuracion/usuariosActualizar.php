@@ -46,9 +46,19 @@ switch ($_REQUEST['accion']){
         break;
     case 'Cambiar':
         $usuario->setIdentificacion($_REQUEST['identificacion']);
-        $usuario->setClave($_REQUEST['claveNueva']);
-        $usuario->cambiarClave();
+        
+        if ($_REQUEST['claveNueva']==$_REQUEST['claveNueva1']){
+            echo "Claves iguales";
+            $usuario->setClave($_REQUEST['claveNueva']);
+            $usuario->cambiarClave();
+            $ruta= 'index.php';
+            header('location: '.$ruta);
+        } else {
+            echo "Las claves ingresadas no son iguales";
+            
+            //$usuario->errorCambiarClave();
+        }
         break;
 }
-header('location: principal.php?CONTENIDO=presentacion/configuracion/usuarios.php')
+//header('location: principal.php?CONTENIDO=presentacion/configuracion/usuarios.php')
 ?>

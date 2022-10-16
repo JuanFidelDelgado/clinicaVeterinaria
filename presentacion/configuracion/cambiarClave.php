@@ -33,7 +33,9 @@ if (isset($_REQUEST['id'])) {
     <table border="0">
         <tr><th>Identificación</th><td><input type="text" name="identificacion" size="50" maxlength="50" value="" required></td></tr>
         <tr><th>Clave nueva</th><td><input type="password" name="claveNueva" size="50" maxlength="32" value="" required></td></tr>
+        <tr><th>Confirmar clave</th><td><input type="password" name="claveNueva1" size="50" maxlength="32" value="" required></td></tr>
     </table><p>
         <input type="hidden" name="id" value="<?= $usuario->getId()?>"/>
     <input type="submit" name="accion" value="Cambiar"/>
 </form>
+<h3 align="center"> SERÁ REDIRECCIONADO A LA PAGÍNA DE INICIO UNA VEZ CONFIRME EL CAMBIO DE CLAVE</h3>

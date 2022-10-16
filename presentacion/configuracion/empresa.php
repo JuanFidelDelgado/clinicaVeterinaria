@@ -10,6 +10,8 @@ if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acce
 
 $lista='';
 $resultado= Empresa::getListaEnObjetos(null, "nit");
+$cuenta= count($resultado);
+
 for ($i = 0; $i < count($resultado); $i++) {
     $empresa=$resultado[$i];
     $lista.='<tr>';
@@ -35,7 +37,13 @@ for ($i = 0; $i < count($resultado); $i++) {
 <table border="1" align="center">
     <tr>
         <th>NIT</th><th>Nombre</th><th>Dirección</th><th>Teléfono</th><th>Correo Electrónico</th><th>Pagina Web</th><th>Facebook</th><th>Instagram</th><th>Twitter</th>
+        <?php
+        if ($cuenta=='0') {
+        ?>
         <th><a href="principal.php?CONTENIDO=presentacion/configuracion/empresaFormulario.php&accion=Adicionar" name="Adicionar"><img src='presentacion/imagenes/add.png' title='Adicionar'></a></th>
+        <?php
+        }
+        ?>
     </tr>
     <?=$lista?>
 </table>
