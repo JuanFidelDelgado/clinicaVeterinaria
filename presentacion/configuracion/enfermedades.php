@@ -21,8 +21,8 @@ for ($i = 0; $i < count($resultado); $i++) {
     $lista.="<td>{$enfermedades->getNombre()}</td>";
     $lista.="<td>{$enfermedades->getDescripcion()}</td>";
     $lista.="<td>";
-        $lista.="<a href='enfermedadesFormulario.php?accion=Modificar&id={$enfermedades->getId()}' title='Modificar enfermedad'><img src='../imagenes/update.png'></a>";
-        $lista.="<img src='../imagenes/delete.png' onClick='eliminar({$enfermedades->getId()})' title='Eliminar'>";
+        $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/enfermedadesFormulario.php&accion=Modificar&id={$enfermedades->getId()}' title='Modificar enfermedad'><img src='presentacion/imagenes/update.png'></a>";
+        $lista.="<img src='presentacion/imagenes/delete.png' onClick='eliminar({$enfermedades->getId()})' title='Eliminar'>";
     $lista.="</td>";
     $lista.="</tr>";
 }
@@ -48,6 +48,6 @@ for ($i = 0; $i < count($resultado); $i++) {
 <script type="text/javascript">
 function eliminar(id){
     var respuesta=confirm("¿Está seguro de eliminar este registro?");
-    if (respuesta)location="enfermedadesActualizar.php?accion=Eliminar&id="+id;
+    if (respuesta)location="principal.php?CONTENIDO=presentacion/configuracion/enfermedadesActualizar.php&accion=Eliminar&id="+id;
 }
 </script>

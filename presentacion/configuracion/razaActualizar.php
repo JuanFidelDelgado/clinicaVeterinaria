@@ -27,5 +27,6 @@ switch ($_REQUEST['accion']){
         $raza->eliminar();
         break;
 }
-header('location: principal.php?CONTENIDO=presentacion/configuracion/raza.php&idEspecie=' . $_REQUEST['idEspecie']).'&id='.$_REQUEST['id'];
+//header('location: principal.php?CONTENIDO=presentacion/configuracion/raza.php&idEspecie=' . $_REQUEST['idEspecie']).'&id='.$_REQUEST['id'];
+header('location: principal.php?CONTENIDO=presentacion/configuracion/especie.php')
 ?>

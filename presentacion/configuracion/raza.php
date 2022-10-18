@@ -27,12 +27,6 @@ for ($i = 0; $i < count($resultado); $i++) {
 
 <h3 align="center">LISTA DE RAZAS DE <?= strtoupper($especie->getNombre()) ?></h3>
 <p></p>
-<table border="0" align="center">
-        <tr>
-            <th><a href="principal.php?CONTENIDO=inicio.php" name="Home" title="Home"><img src='presentacion/imagenes/home.png' title='Home'></a></th>
-        </tr>
-</table>
-<p></p>
 <table border="1" align="center">
     <tr>
         <th>Id</th><th>Nombre</th><th>Especie</th><th><a href="principal.php?CONTENIDO=presentacion/configuracion/razaFormulario.php&idEspecie=<?= $especie->getId() ?>" name="Adicionar"><img src='presentacion/imagenes/add.png' title='Acicionar'></a></th>

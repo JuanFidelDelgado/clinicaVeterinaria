@@ -26,5 +26,5 @@ switch ($_REQUEST['accion']){
         $enfermedades->eliminar();
         break;
 }
-header('location: enfermedades.php')
+header('location: principal.php?CONTENIDO=presentacion/configuracion/enfermedades.php')
 ?>
