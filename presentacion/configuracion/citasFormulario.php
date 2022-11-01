@@ -29,14 +29,11 @@ if (isset($_REQUEST['id'])) {
     <table border="0">
         <tr><th>Fecha</th><td><input type=date name="fecha" value="<?= $citas->getFecha() ?>" required></td></tr>
         <tr><th>Hora</th><td><input type="time" name="hora" value="<?= $citas->getHora() ?>" required></td></tr>
-        
-        <tr><th>Lugar</th><td><input type="radio" name="lugar" value="Domicilio">Domicilio</td></tr>
-            <tr><th></th><td><input type="radio" name="lugar" value="Clínica">Clínica</td></tr>
-        
-        <!--<tr><th>Lugar</th><td><input type="text" name="lugar" size="50" maxlength="50" value="<?= $citas->getLugar() ?>" required></td></tr>-->
+        <tr><th>Lugar</th><td><select name="lugar"><?= LugarCita::getListaEnOptions($citas->getLugar()) ?></select></td></tr>
         <tr><th>Tipo</th><td><select name="tipoCita"><?= TipoCita::getListaEnOptions($citas->getTipoCita()) ?></select></td></tr>
-        <tr><th>Estado</th><td><select name="estadoCita"><?= EstadoCita::getListaEnOptions($citas->getEstadoCita()) ?></select></td></tr>
+        <!--<tr><th>Estado</th><td><select name="estadoCita"><?= EstadoCita::getListaEnOptions($citas->getEstadoCita()) ?></select></td></tr>-->
     </table><p>
+    <input type="hidden" name="estadoCita" value="Programada">
     <input type="hidden" name="id" value="<?= $citas->getId() ?>">
     <input type="hidden" name="idPaciente" value="<?= $idPaciente ?>">
     <input type="submit" name="accion" value="<?= $titulo ?>"/>

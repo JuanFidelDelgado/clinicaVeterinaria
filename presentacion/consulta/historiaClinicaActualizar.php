@@ -7,6 +7,7 @@
 
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
+$paciente= new Pacientes('id', $_REQUEST['idPaciente']);
 
 $historiaClinica= new HistoriaClinica(null, null);
 switch ($_REQUEST['accion']){
@@ -19,8 +20,9 @@ switch ($_REQUEST['accion']){
         $historiaClinica->guardar();
         break;
     case 'Modificar':
-        $historiaClinica->setFecha(date('Y-m-d h:i'));
-        $historiaClinica->setIdPaciente($_REQUEST['idPaciente']);
+        $historiaClinica->setId($_REQUEST['id']);
+        //$historiaClinica->setFecha(date('Y-m-d h:i'));
+        //$historiaClinica->setIdPaciente($_REQUEST['idPaciente']);
         $historiaClinica->setFechaEsterilizacion($_REQUEST['fechaEsterilizacion']);
         $historiaClinica->setTipoAlimentacion($_REQUEST['tipoAlimentacion']);
         $historiaClinica->setHabitat($_REQUEST['habitat']);
@@ -31,5 +33,5 @@ switch ($_REQUEST['accion']){
         $historiaClinica->eliminar();
         break;
 }
-header('location: principal.php?CONTENIDO=presentacion/consulta/historiaClinica.php')
+header('location: principal.php?CONTENIDO=presentacion/consulta/historiaClinica.php&idPaciente=' . $_REQUEST['idPaciente'])
 ?>

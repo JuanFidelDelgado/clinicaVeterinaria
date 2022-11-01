@@ -28,9 +28,9 @@ switch ($_REQUEST['accion']){
         break;
     case 'Modificar':
         $usuario->setId($_REQUEST['id']);
-        $usuario->setTipoUsuario(strtoupper($_REQUEST['tipoUsuario']));
+        $usuario->setTipoUsuario($_REQUEST['tipoUsuario']);
         $usuario->setIdentificacion($_REQUEST['identificacion']);
-        $usuario->setTipoIdentificacion(strtoupper($_REQUEST['tipoIdentificacion']));
+        $usuario->setTipoIdentificacion($_REQUEST['tipoIdentificacion']);
         $usuario->setNombres($_REQUEST['nombres']);
         $usuario->setApellidos($_REQUEST['apellidos']);
         $usuario->setTelefono($_REQUEST['telefono']);

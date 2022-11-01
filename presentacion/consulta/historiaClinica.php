@@ -7,8 +7,9 @@
 
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
-$paciente= $_REQUEST['idPaciente'];
+//$paciente= $_REQUEST['idPaciente'];
 $paciente= new Pacientes('id', $_REQUEST['idPaciente']);
+//echo $paciente->getNombre();
 
 $resultado= HistoriaClinica::getListaEnObjetos("idPaciente={$_REQUEST['idPaciente']}", "idPaciente");
 $cuenta= count($resultado);

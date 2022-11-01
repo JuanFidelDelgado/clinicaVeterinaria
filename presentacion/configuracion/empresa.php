@@ -51,6 +51,6 @@ for ($i = 0; $i < count($resultado); $i++) {
 <script type="text/javascript">
 function eliminar(nit){
     var respuesta=confirm("¿Está seguro de eliminar este registro?");
-    if (respuesta)location="empresaActualizar.php?accion=Eliminar&nit="+nit;
+    if (respuesta)location="principal.php?CONTENIDO=presentacion/configuracion/empresaActualizar.php&accion=Eliminar&nit="+nit;
 }
 </script>

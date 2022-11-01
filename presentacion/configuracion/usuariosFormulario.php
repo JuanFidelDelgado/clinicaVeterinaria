@@ -26,16 +26,9 @@ if (isset($_REQUEST['id'])) {
 <h3 align="center"><?= strtoupper($titulo) ?> USUARIO</h3>
 <form name="formulario" method="post" action="principal.php?CONTENIDO=presentacion/configuracion/usuariosActualizar.php">
     <table border="0">
-        <tr><th>Tipo usuario</th><td><input type="radio" name="tipoUsuario" value="A">Administrador</td></tr>
-            <tr><th></th><td><input type="radio" name="tipoUsuario" value="C">Cliente</td></tr>
-            <tr><th></th><td><input type="radio" name="tipoUsuario" value="M">Médico</td></tr>
-            <tr><th></th><td><input type="radio" name="tipoUsuario" value="S">Asociado</td></tr>
+        <tr><th>Tipo usuario</th><td><select name="tipoUsuario"><?= TiposUsuario::getListaEnOptions($usuario->getTipoUsuario()) ?>"></select></td></tr>
         <tr><th>Identificación</th><td><input type="text" name="identificacion" size="50" maxlength="50" value="<?= $usuario->getIdentificacion() ?>" required></td></tr>
-        <tr><th>Tipo Identificación</th><td><input type="radio" name="tipoIdentificacion" value="1">Cédula de cidadanía</td></tr>
-        <tr><th></th><td><input type="radio" name="tipoIdentificacion" value="2">Tarjeta de identidad</td></tr>
-            <tr><th></th><td><input type="radio" name="tipoIdentificacion" value="3">Cédula de extranjería</td></tr>
-            <tr><th></th><td><input type="radio" name="tipoIdentificacion" value="4">Identificación tributaria</td></tr>
-        <!--<tr><th>Tipo Identificación</th><td><select name="tipoIdentificacion"><?= TipoIdentificacion::getListaEnOptions($usuario->getTipoIdentificacion()) ?>"></select></td></tr>-->
+        <tr><th>Tipo Identificación</th><td><select name="tipoIdentificacion"><?= TipoIdentificacion::getListaEnOptions($usuario->getTipoIdentificacion()) ?>"></select></td></tr>
         <tr><th>Nombres</th><td><input type="text" name="nombres" value="<?= $usuario->getNombres() ?>" required></td></tr>
         <tr><th>Apellidos</th><td><input type="text" name="apellidos" size="50" maxlength="50" value="<?= $usuario->getApellidos() ?>"></td></tr>
         <tr><th>Teléfono</th><td><input type="text" name="telefono" size="50" maxlength="50" value="<?= $usuario->getTelefono() ?>" required></td></tr>

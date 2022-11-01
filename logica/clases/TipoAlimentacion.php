@@ -19,7 +19,7 @@ class TipoAlimentacion {
         if ($campo != null){
             if (!is_array($campo)){
                 $cadenaSQL="select id, tipo, observaciones from tipoAlimentacion where $campo=$valor";
-                echo $cadenaSQL.'<p>';
+                //echo $cadenaSQL.'<p>';
                 $campo=ConectorBD::ejecutarQuery($cadenaSQL)[0];
             }  
             $this->id=$campo['id'];

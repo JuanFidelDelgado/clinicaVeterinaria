@@ -10,6 +10,8 @@ date_default_timezone_set("America/Bogota");
 require_once './logica/clasesGenericas/ConectorBD.php';
 require_once './logica/clases/Citas.php';
 require_once './logica/clases/Consulta.php';
+require_once './logica/clases/ConstantesFisiologicas.php';
+require_once './logica/clases/Desparasitacion.php';
 require_once './logica/clases/Empresa.php';
 require_once './logica/clases/Enfermedades.php';
 require_once './logica/clases/Especies.php';
@@ -19,13 +21,18 @@ require_once './logica/clases/Habitat.php';
 require_once './logica/clases/Medicamentos.php';
 require_once './logica/clases/Pacientes.php';
 require_once './logica/clases/Razas.php';
+require_once './logica/clases/SexoPaciente.php';
 require_once './logica/clases/TipoAlimentacion.php';
 require_once './logica/clases/TipoUsuario.php';
+require_once './logica/clases/TiposUsuario.php';
 require_once './logica/clases/TipoIdentificacion.php';
 require_once './logica/clases/Usuario.php';
 require_once './logica/clases/Vacunas.php';
 require_once './logica/clases/ExamenClinico.php';
 require_once './logica/clases/HistoriaClinica.php';
+require_once './logica/clases/LugarCita.php';
+require_once './logica/clases/CondicionCorporal.php';
+require_once './logica/clases/EstadoHidratacion.php';
 
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad

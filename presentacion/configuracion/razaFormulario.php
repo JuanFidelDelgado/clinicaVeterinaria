@@ -7,6 +7,7 @@
 
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
+$especie=new Especies('id', $_REQUEST['idEspecie']);
 
 $titulo='Adicionar';
 if (isset($_REQUEST['id'])) {
@@ -16,7 +17,6 @@ if (isset($_REQUEST['id'])) {
     $raza = new Razas(null, null);
     $raza->setIdEspecie($_REQUEST['idEspecie']);
 }
-$especie=$raza->getEspecie();
 ?>
 
 <h3><?= strtoupper($titulo) ?> RAZA</h3>
@@ -35,6 +35,6 @@ $especie=$raza->getEspecie();
     </table><p>
     <input type="hidden" name="id" value="<?= $raza->getId()?>">
     <input type="hidden" name="idAnterior" value="<?= $raza->getId()?>"><!-- Se envia el id como idAnterior para el método modificar -->
-    <input type="hidden" name="idEspecie" value="<?= $raza->getIdEspecie()?>"><!-- Se envía idEspecie para que sea reconocido la especie del cual se trata -->
+    <input type="hidden" name="idEspecie" value="<?= $especie->getId()?>"><!-- Se envía idEspecie para que sea reconocido la especie del cual se trata -->
     <input type="submit" name="accion" value="<?= $titulo ?>"/>
 </form>

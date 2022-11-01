@@ -8,7 +8,8 @@ date_default_timezone_set("America/Bogota");
 
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
-
+$paciente= new Pacientes('id', $_REQUEST['idPaciente']);
+//echo $paciente->getNombre();
 $titulo='Adicionar';
 if (isset($_REQUEST['id'])) {
     $titulo = 'Modificar';
@@ -23,9 +24,11 @@ if (isset($_REQUEST['id'])) {
     <table border="0">
         <tr><th>Fecha Esterilización</th><td><input type="date" name="fechaEsterilizacion" value="<?= $historiaClinica->getFechaEsterilizacion() ?>"></td></tr>
         <tr><th>Tipo Alimentación</th><td><select name="tipoAlimentacion"><?= TipoAlimentacion::getListaEnOptions($historiaClinica->getTipoAlimentacion()) ?>"</select></td></tr>
-        <tr><th>Hábitat</th><td><select name="habitat"><?= Habitat::getListaEnOptions($historiaClinica->getHabitat()) ?>"</select></td></tr>
+        <tr><th>Habitat</th><td><select name="habitat"><?= Habitat::getListaEnOptions($historiaClinica->getHabitat()) ?>"</select></td></tr>
+        
     </table><p>
     
     <input type="hidden" name="idPaciente" value="<?= $_REQUEST['idPaciente']?>"/>
+    <!--<input type="hidden" name="id" value="<?= $_REQUEST['id']?>"/>-->
     <input type="submit" name="accion" value="<?= $titulo ?>"/>
 </form>

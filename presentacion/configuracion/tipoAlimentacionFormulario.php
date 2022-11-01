@@ -25,7 +25,7 @@ if (isset($_REQUEST['id'])) {
 <form name="formulario" method="post" action="principal.php?CONTENIDO=presentacion/configuracion/tipoAlimentacionActualizar.php">
     <table border="0">
         <tr><th>Tipo</th><td><input type="text" name="tipo" value="<?= $tipoAlimentacion->getTipo() ?>" required></td>
-        <tr><th>Observaciones</th><td><input type="text" name="observaciones" size="50" maxlength="50" value="<?= $tipoAlimentacion->getObservaciones() ?>" required></td></tr>
+        <tr><th>Observaciones</th><td><input type="text" name="observaciones" size="50" maxlength="500" value="<?= $tipoAlimentacion->getObservaciones() ?>" required></td></tr>
     </table><p>
     <input type="hidden" name="id" value="<?= $tipoAlimentacion->getId()?>">
     <input type="submit" name="accion" value="<?= $titulo ?>"/>

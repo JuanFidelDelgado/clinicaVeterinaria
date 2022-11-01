@@ -29,8 +29,7 @@ if (isset($_REQUEST['id'])) {
                     <tr><th>Foto</th><td><input type="file" name="foto" value="<?= $paciente->getFoto() ?>" onchange="mostrarFoto()"></td></tr>
                     <tr><th>Nombre</th><td><input type="text" name="nombre" size="50" maxlength="50" value="<?= $paciente->getNombre() ?>" required></td></tr>
                     <tr><th>Fecha Nacimiento</th><td><input type="date" name="fechaNacimiento" value="<?= $paciente->getFechaNacimiento() ?>" required></td></tr>
-                    <tr><th>Sexo</th><td><input type="radio" name="sexo" value="M">Macho</td></tr>
-                    <tr><th></th><td><input type="radio" name="sexo" value="H">Hembra</td></tr>
+                    <tr><th>Sexo</th><td><select name="sexo"><?= SexoPaciente::getListaEnOptions($paciente->getSexo()) ?>"></select></td></tr>
                     <tr><th>Color</th><td><input type="text" name="color" size="50" maxlength="50" value="<?= $paciente->getColor() ?>" required></td></tr>
                     <tr><th>Señas Particulares</th><td><input type="text" name="señasParticulares" size="50" maxlength="50" value="<?= $paciente->getSeñasParticulares() ?>" required></td></tr>
                     <tr><th>Especie</th><td><select name="idEspecie"><?= Especies::getListaEnOptions($paciente->getIdEspecie()) ?>"></select></td></tr>

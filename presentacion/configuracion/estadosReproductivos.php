@@ -9,7 +9,7 @@
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
 
 $lista='';
-@$resultado= EstadosReproductivos::getListaBuscarEnObjetos($_REQUEST['parametro'], 'id');
+@$resultado= EstadosReproductivos::getListaEnObjetos(null, 'id');
 for ($i = 0; $i < count($resultado); $i++) {
     $estados=$resultado[$i];
     $lista.="<tr>";
@@ -24,15 +24,6 @@ for ($i = 0; $i < count($resultado); $i++) {
 ?>
 
 <h3 align="center">LISTA DE ESTADOS REPRODUCTIVOS</h3>
-<p></p>
-<form name="formularioBuscar" method="post" action="estadosReproductivos.php">
-    <table border="0" align="center">
-        <tr>
-            <th>Buscar:</th><th><input type="text" name="parametro" value="" /></th><th><input type="submit" value="Buscar"/></th>
-            <th><a href="principal.php?CONTENIDO=inicio.php" name="Home" title="Home"><img src='presentacion/imagenes/home.png' title='Home'></a></th>
-        </tr>
-    </table>
-</form>
 <p></p>
 <table border="1" align="center">
     <tr>

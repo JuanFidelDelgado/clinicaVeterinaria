@@ -9,7 +9,7 @@
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
 
 $lista='';
-@$resultado= Habitat::getListaBuscarEnObjetos($_REQUEST['parametro'], 'id');
+@$resultado= Habitat::getListaEnObjetos(null, 'id');
 for ($i = 0; $i < count($resultado); $i++) {
     $habitat=$resultado[$i];
     $lista.="<tr>";
@@ -24,15 +24,6 @@ for ($i = 0; $i < count($resultado); $i++) {
 ?>
 
 <h3 align="center" >LISTA DE HÁBITAT</h3>
-<p></p>
-<form name="formularioBuscar" method="post" action="principal.php?CONTENIDO=presentacion/configuracion/habitat.php">
-    <table border="0" align="center">
-        <tr>
-            <th>Buscar:</th><th><input type="text" name="parametro" value="" /></th><th><input type="submit" value="Buscar"/></th>
-            <th><a href="principal.php?CONTENIDO=inicio.php" name="Home" title="Home"><img src='presentacion/imagenes/home.png' title='Home'></a></th>
-        </tr>
-    </table>
-</form>
 <p></p>
 <table border="1" align="center">
     <tr>

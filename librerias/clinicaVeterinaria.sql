@@ -24,9 +24,15 @@ create table tipoIdentificacion(
     nombre varchar(50) not null
 );
 
+create table tiposUsuario(
+    id int auto_increment primary key not null,
+    tipo varchar(1) not null,
+    nombre varchar(50) not null
+);
+
 create table usuario (
     id int auto_increment primary key not null,
-    tipoUsuario varchar(1) not null,
+    tipoUsuario varchar(50) not null,
     identificacion int not null,
     tipoIdentificacion varchar(50) not null,
     nombres varchar(50) not null,
@@ -36,6 +42,12 @@ create table usuario (
     correoElectronico varchar(50) not null,
     clave varchar(32) not null,
     tarjetaProfesional varchar(15) null
+);
+
+create table sexoPaciente(
+    id int auto_increment primary key not null,
+    tipo varchar(1) not null,
+    nombre varchar(50) not null
 );
 
 create table especie (
@@ -73,6 +85,11 @@ create table tipoCita (
     tipo varchar(20) not null
 );
 
+create table lugarCita (
+    id int auto_increment primary key not null,
+    lugar varchar(20) not null
+);
+
 create table estadoCita (
     id int auto_increment primary key not null,
     estado varchar(20) not null
@@ -101,6 +118,16 @@ create table consulta (
 alter table consulta add foreign key(idCita) references citas(id) on delete restrict on update cascade;
 alter table consulta add foreign key(idMedico) references usuario(id) on delete restrict on update cascade;
 alter table consulta add foreign key(idPaciente) references paciente(id) on delete restrict on update cascade;
+
+create table condicionCorporal (
+    id int auto_increment primary key not null,
+    condicion varchar(50) not null
+);
+
+create table estadoHidratacion (
+    id int auto_increment primary key not null,
+    hidratacion varchar(50) not null
+);
 
 create table examenClinico (
     id int auto_increment primary key not null,
@@ -271,7 +298,7 @@ create table historiaClinica (
     id int auto_increment primary key not null,
     fecha date,
     idPaciente int not null,
-    fechaEsterilizacion date,
+    fechaEsterilizacion date null,
     tipoAlimentacion varchar(20) null,
     habitat varchar(20) null
 );
@@ -314,10 +341,14 @@ alter table enfermedadesPaciente add foreign key(idHistoriaClinica) references h
 alter table consulta add foreign key(idHistoriaClinica) references historiaClinica(id) on delete restrict on update cascade;
 
 insert into tipoIdentificacion (tipo, nombre) values ('CC', 'Cédula de ciudadanía'), ('CE', 'Cédula de extranjería'), ('TI', 'Tarjeta de identidad'), ('NIT', 'Identificación tributaria');
+insert into tiposUsuario (tipo, nombre) values ('A', 'Administrador'), ('C', 'Cliente'), ('M', 'Médico'), ('S', 'Asociado');
+insert into sexoPaciente (tipo, nombre) values ('M', 'Macho'), ('H', 'Hembra');
 insert into estadoCita (estado) values ('Programada'), ('Cumplida'), ('Cancelada');
+insert into lugarCita (lugar) values ('Clínica'), ('Domicilio');
+insert into condicionCorporal (condicion) values ('Normal'), ('Caquético'), ('Sobrepeso'), ('Delgado'), ('Obeso');
+insert into estadoHidratacion (hidratacion) values ('Normal'), ('Deshidratado 0.0% - 5.0%'), ('Deshidratado 5.0% - 7.0%'), ('Deshidratado 7.0% - 9.0%'), ('Deshidratado 9.0% - 10.0%'), ('Deshidrata mayor a 10.0%');
 insert into tipoCita (tipo) values ('General'), ('Especialista'), ('Odontología'), ('No programada');
-INSERT INTO `usuario`(`tipoUsuario`, `identificacion`, `tipoIdentificacion`, `nombres`, `apellidos`, `telefono`, `direccion`, `correoElectronico`, `clave`, `tarjetaProfesional`) VALUES ('A','1000','1','Juan Fidel','Delgado González','310000000','Calle 1 # 11 - 91','juan@empresa.com',md5('1000'),'');
-INSERT INTO `usuario`(`tipoUsuario`, `identificacion`, `tipoIdentificacion`, `nombres`, `apellidos`, `telefono`, `direccion`, `correoElectronico`, `clave`, `tarjetaProfesional`) VALUES ('M','2000','1','Juan Fidel','Delgado González','310000000','Calle 1 # 11 - 91','juan@empresa.com',md5('2000'),'123456');
+insert into usuario (tipoUsuario, identificacion, tipoIdentificacion, nombres, apellidos, telefono, direccion, correoElectronico, clave, tarjetaProfesional) values ('A','1000','1','Juan Fidel','Delgado González','310000000','Calle 1 # 11 - 91','juan@empresa.com',md5('1000'),'');
 insert into especie (nombre) values ('Caninos');
 insert into especie (nombre) values ('Felinos');
 insert into raza (nombre, idEspecie) values ('Criollo', 1);

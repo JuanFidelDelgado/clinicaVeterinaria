@@ -11,6 +11,10 @@ require_once dirname(__FILE__) . '/../../logica/clases/Citas.php';
 @session_start();
 if (!isset($_SESSION['usuario'])) header('location: ../../index.php?mensaje=Acceso no autorizado'); //Validación de seguridad
 
+if ($_REQUEST['id']!=null){
+    $citaOriginal= new Citas('id', $_REQUEST['id']);
+}
+
 $citas= new Citas(null, null);
 switch ($_REQUEST['accion']){
     case 'Agendar':
@@ -34,7 +38,12 @@ switch ($_REQUEST['accion']){
         break;
     case 'Eliminar':
         $citas->setId($_REQUEST['id']);
-        $citas->eliminar();
+        $citas->setFecha($citaOriginal->getFecha());    
+        $citas->setHora($citaOriginal->getHora());
+        $citas->setLugar($citaOriginal->getLugar());
+        $citas->setTipoCita($citaOriginal->getTipoCita());
+        $citas->setEstadoCita('Cancelada');
+        $citas->modificar();
         break;
 }
 header('location: principal.php?CONTENIDO=presentacion/configuracion/citas.php')

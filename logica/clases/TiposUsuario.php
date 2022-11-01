@@ -6,11 +6,11 @@
  */
 
 /**
- * Description of TipoUsuario
+ * Description of TiposUsuario
  *
  * @author adora
  */
-class TipoIdentificacion {
+class TiposUsuario {
     private $id;
     private $tipo;
     private $nombre;
@@ -19,7 +19,7 @@ class TipoIdentificacion {
         if ($campo != null){
             if (!is_array($campo)){
                 if ($valor=='') $valor='null';  
-                $cadenaSQL="select id, tipo, nombre from tipoIdentificacion where $campo=$valor";
+                $cadenaSQL="select id, tipo, nombre from tiposUsuario where $campo=$valor";
                 //echo $cadenaSQL;
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];  
@@ -62,19 +62,19 @@ class TipoIdentificacion {
     }
 
     public function guardar() {
-        $cadenaSQL="insert into tipoIdentificacion (tipo) values ('$this->tipo', '$this->nombre')";
+        $cadenaSQL="insert into tiposUsuario (tipo) values ('$this->tipo', '$this->nombre')";
         echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public function modificar() {
-        $cadenaSQL="update tipoIdentificacion set tipo='$this->tipo', nombre='$this->nombre' where id='$this->id'";
+        $cadenaSQL="update tiposUsuario set tipo='$this->tipo', nombre='$this->nombre' where id='$this->id'";
         echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public function eliminar(){
-        $cadenaSQL="delete from tipoIdentificacion where id='$this->id'";
+        $cadenaSQL="delete from tiposUsuario where id='$this->id'";
         ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
@@ -83,29 +83,29 @@ class TipoIdentificacion {
         else $filtro=" where $filtro";
         if ($orden==null || $orden=='') $orden='';
         else $orden=" order by $orden";
-        $cadenaSQL="select * from tipoIdentificacion $filtro $orden";
+        $cadenaSQL="select * from tiposUsuario $filtro $orden";
         //echo $cadenaSQL;
         return ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public static function getListaEnObjetos($filtro, $orden) {
-        $resultado= TipoIdentificacion::getLista($filtro, $orden);
+        $resultado= TiposUsuario::getLista($filtro, $orden);
         $lista=array();
         for ($i = 0; $i < count($resultado); $i++) {
-            $tipoIdentificacion= new TipoIdentificacion($resultado[$i], null);
-            $lista[$i]=$tipoIdentificacion;
+            $tiposUsuario= new TiposUsuario($resultado[$i], null);
+            $lista[$i]=$tiposUsuario;
         }
         return $lista;
     }
     
     public static function getListaEnOptions($predeterminado){
         $lista='';
-        $resultado= TipoIdentificacion::getListaEnObjetos(null, 'nombre');
+        $resultado= TiposUsuario::getListaEnObjetos(null, 'nombre');
         for ($i = 0; $i < count($resultado); $i++) {
-            $tipoIdentificacion=$resultado[$i];
-            if ($predeterminado==$tipoIdentificacion->getNombre()) $auxiliar='selected';
+            $tiposUsuario=$resultado[$i];
+            if ($predeterminado==$tiposUsuario->getTipo()) $auxiliar='selected';
             else $auxiliar='';
-            $lista.="<option value='{$tipoIdentificacion->getNombre()}' $auxiliar>{$tipoIdentificacion->getNombre()}</option>";
+            $lista.="<option value='{$tiposUsuario->getTipo()}' $auxiliar>{$tiposUsuario->getTipo()}</option>";
         }
         return $lista;
     }

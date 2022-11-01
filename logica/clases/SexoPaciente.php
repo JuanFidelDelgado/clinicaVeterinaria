@@ -6,11 +6,11 @@
  */
 
 /**
- * Description of TipoUsuario
+ * Description of SexoPaciente
  *
  * @author adora
  */
-class TipoIdentificacion {
+class SexoPaciente {
     private $id;
     private $tipo;
     private $nombre;
@@ -19,7 +19,7 @@ class TipoIdentificacion {
         if ($campo != null){
             if (!is_array($campo)){
                 if ($valor=='') $valor='null';  
-                $cadenaSQL="select id, tipo, nombre from tipoIdentificacion where $campo=$valor";
+                $cadenaSQL="select id, tipo, nombre from sexoPaciente where $campo=$valor";
                 //echo $cadenaSQL;
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];  
@@ -61,51 +61,34 @@ class TipoIdentificacion {
         else return $this->nombre;
     }
 
-    public function guardar() {
-        $cadenaSQL="insert into tipoIdentificacion (tipo) values ('$this->tipo', '$this->nombre')";
-        echo $cadenaSQL;
-        ConectorBD::ejecutarQuery($cadenaSQL);
-    }
-    
-    public function modificar() {
-        $cadenaSQL="update tipoIdentificacion set tipo='$this->tipo', nombre='$this->nombre' where id='$this->id'";
-        echo $cadenaSQL;
-        ConectorBD::ejecutarQuery($cadenaSQL);
-    }
-    
-    public function eliminar(){
-        $cadenaSQL="delete from tipoIdentificacion where id='$this->id'";
-        ConectorBD::ejecutarQuery($cadenaSQL);
-    }
-    
     public static function getLista($filtro, $orden){
         if ($filtro==null || $filtro=='') $filtro='';
         else $filtro=" where $filtro";
         if ($orden==null || $orden=='') $orden='';
         else $orden=" order by $orden";
-        $cadenaSQL="select * from tipoIdentificacion $filtro $orden";
+        $cadenaSQL="select * from sexoPaciente $filtro $orden";
         //echo $cadenaSQL;
         return ConectorBD::ejecutarQuery($cadenaSQL);
     }
     
     public static function getListaEnObjetos($filtro, $orden) {
-        $resultado= TipoIdentificacion::getLista($filtro, $orden);
+        $resultado= SexoPaciente::getLista($filtro, $orden);
         $lista=array();
         for ($i = 0; $i < count($resultado); $i++) {
-            $tipoIdentificacion= new TipoIdentificacion($resultado[$i], null);
-            $lista[$i]=$tipoIdentificacion;
+            $sexoPaciente= new SexoPaciente($resultado[$i], null);
+            $lista[$i]=$sexoPaciente;
         }
         return $lista;
     }
     
     public static function getListaEnOptions($predeterminado){
         $lista='';
-        $resultado= TipoIdentificacion::getListaEnObjetos(null, 'nombre');
+        $resultado= SexoPaciente::getListaEnObjetos(null, 'nombre');
         for ($i = 0; $i < count($resultado); $i++) {
-            $tipoIdentificacion=$resultado[$i];
-            if ($predeterminado==$tipoIdentificacion->getNombre()) $auxiliar='selected';
+            $sexoPaciente=$resultado[$i];
+            if ($predeterminado==$sexoPaciente->getTipo()) $auxiliar='selected';
             else $auxiliar='';
-            $lista.="<option value='{$tipoIdentificacion->getNombre()}' $auxiliar>{$tipoIdentificacion->getNombre()}</option>";
+            $lista.="<option value='{$sexoPaciente->getTipo()}' $auxiliar>{$sexoPaciente->getTipo()}</option>";
         }
         return $lista;
     }

@@ -30,7 +30,7 @@ for ($i = 0; $i < count($resultado); $i++) {
 
 <h3 align="center">LISTA DE ENFERMEDADES</h3>
 <p></p>
-<form name="formularioBuscar" method="post" action="enfermedades.php">
+<form name="formularioBuscar" method="post" action="principal.php?CONTENIDO=presentacion/configuracion/enfermedades.php">
     <table border="0" align="center">
         <tr>
             <th>Buscar:</th><th><input type="text" name="parametro" value="" /></th><th><input type="submit" value="Buscar"/></th>

@@ -93,8 +93,8 @@ class HistoriaClinica {
     }
     
     public function modificar() {
-        $cadenaSQL="update historiaClinica set fecha='$this->fecha', idPaciente='$this->idPaciente', fechaEsterilizacion='$this->fechaEsterilizacion', "
-                . "tipoAlimentacion='$this->tipoAlimentacion', habitat='prueba' where id='$this->id'";
+        $cadenaSQL="update historiaClinica set fechaEsterilizacion='$this->fechaEsterilizacion', "
+                . "tipoAlimentacion='$this->tipoAlimentacion', habitat='$this->habitat' where id='$this->id'";
         echo $cadenaSQL;
         ConectorBD::ejecutarQuery($cadenaSQL);
     }

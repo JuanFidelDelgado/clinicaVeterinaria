@@ -28,5 +28,6 @@ switch ($_REQUEST['accion']){
         break;
 }
 //header('location: principal.php?CONTENIDO=presentacion/configuracion/raza.php&idEspecie=' . $_REQUEST['idEspecie']).'&id='.$_REQUEST['id'];
-header('location: principal.php?CONTENIDO=presentacion/configuracion/especie.php')
+header('location: principal.php?CONTENIDO=presentacion/configuracion/raza.php&idEspecie=' . $_REQUEST['idEspecie'])
+//header('location: principal.php?CONTENIDO=presentacion/configuracion/especie.php')
 ?>

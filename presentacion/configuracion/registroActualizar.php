@@ -50,5 +50,6 @@ switch ($_REQUEST['accion']){
         $usuario->cambiarClave();
         break;
 }
-header('location: http://localhost/clinicaVeterinaria/index.php')
+//header('location: http://localhost/clinicaVeterinaria/index.php')
+header('location: ../../index.php')
 ?>

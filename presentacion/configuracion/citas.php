@@ -12,6 +12,7 @@ $USUARIO= unserialize($_SESSION['usuario']);
 $consulta= new Consulta(null, null);
 $usuario= new Usuario('id', $USUARIO->getId());
 
+
 if ($paciente==null || $paciente==''){
     $historiaClinica= new HistoriaClinica(null, null);
 }else {
@@ -45,13 +46,16 @@ for ($i = 0; $i < count($resultado); $i++) {
     $lista.="<td>{$citas->getFecha()}</td>";
     $lista.="<td>{$citas->getHora()}</td>";
     $lista.="<td>{$citas->getEstadoCita()}</td>";
-    if ($citas->getEstadoCita()=='Programada' && $USUARIO->getTipoUsuarioEnObjeto()=='Médico'){
-        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/configuracion/citasFormulario.php&accion=Modificar&id={$citas->getId()}&idPaciente={$paciente->getId()}' title='Modificar'><img src='presentacion/imagenes/update.png'></a>";
+    if ($citas->getEstadoCita()=='Programada' /*&& $USUARIO->getTipoUsuarioEnObjeto()=='Médico'*/){
+        $lista.="<td>";
+        $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citasFormulario.php&accion=Modificar&id={$citas->getId()}&idPaciente={$paciente->getId()}' title='Modificar'><img src='presentacion/imagenes/update.png'></a>";
+        $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citasActualizar.php&accion=Eliminar&id={$citas->getId()}&idPaciente={$paciente->getId()}' title='Cancelar Cita'><img src='presentacion/imagenes/cancel.png'></a>";
         $lista.="</td>";
-        //if ($usuario->getTipoUsuarioEnObjeto()=='Médico' && $citas->getEstadoCita()=='Programada'){
-            $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultaActualizar.php&idPaciente={$citas->getIdPaciente()}&idCita={$citas->getId()}&idMedico={$USUARIO->getId()}&idHistoriaClinica={$historiaClinica->getId()}'>Ir a consulta</a></td>";
-            //$lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consulta.php&idPaciente={$citas->getIdPaciente()}&idCita={$citas->getId()}&idMedico={$USUARIO->getId()}&idHistoriaClinica={$historiaClinica->getId()}'>Diligenciar consulta</a></td>";
-        //}
+    } else {
+        $lista.="<td></td>";
+    }
+    if ($usuario->getTipoUsuarioEnObjeto()=='Cliente' && $citas->getEstadoCita()=='Programada') {
+        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultaActualizar.php&idPaciente={$citas->getIdPaciente()}&idCita={$citas->getId()}&idMedico={$USUARIO->getId()}&idHistoriaClinica={$historiaClinica->getId()}'>Ir a consulta</a></td>";
     }
     $lista.="</tr>";
 }

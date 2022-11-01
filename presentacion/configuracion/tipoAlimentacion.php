@@ -25,12 +25,6 @@ for ($i = 0; $i < count($resultado); $i++) {
 
 <h3 align="center">TIPOS DE ALIMENTACIÓN</h3>
 <p></p>
-<table border="0" align="center">
-        <tr>
-            <th><a href="principal.php?CONTENIDO=inicio.php" name="Home" title="Home"><img src='presentacion/imagenes/home.png' title='Home'></a></th>
-        </tr>
-</table>
-<p></p>
 <table border="1" align="center">
     <tr>
         <th>Tipo</th><th>Observaciones</th>
