@@ -37,7 +37,8 @@ tr:hover{ /*Características cuando el puntero pasa sobre las filas*/
 }
 
 th{ /*Color para los encabezados de las tablas*/
-    /*background-color: #fff;*/
+    
+    background-color: darkcyan;
 }
 
 input:focus{ /*Características cuando los elementos de los formularios estan en uso*/

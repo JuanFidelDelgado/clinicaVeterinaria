@@ -229,10 +229,10 @@ if ($consulta->getId()!=null) {
             </th>
         </tr>
         <tr>
-            <th>DIAGNOSTICO DEFINITIVO</th><td><input type="text" name="diagnosticoDefinitivo" value="<?= $diagnosticoDefinitivo->getDiagnosticoDefinitivo()?>"/></td>
+            <th>DIAGNOSTICO DEFINITIVO</th><td><input type="text" name="diagnosticoDefinitivo" value="<?= $diagnosticoDefinitivo->getDiagnosticoDefinitivo()?>" size="120"/></td>
         </tr>
         <tr>
-            <th>OBSERVACIONES</th><td><input type="text" name="observaciones" value="<?= $diagnosticoDefinitivo->getObservaciones()?>"/></td>
+            <th>OBSERVACIONES</th><td><input type="text" name="observaciones" value="<?= $diagnosticoDefinitivo->getObservaciones()?>" size="120"/></td>
         </tr>                       
         <tr>                       
         <input type="hidden" name="idConsulta" value="<?=$consulta->getId()?>"/>            

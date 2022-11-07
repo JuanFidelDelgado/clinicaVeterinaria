@@ -41,7 +41,7 @@ $diagnosticoDefinitivo = new DiagnosticoDefinitivo('idConsulta', $consulta->getI
 <br>
 <table border="1" align="center">
     <tr>
-        <td colspan="2" rowspan="6"><img src="presentacion/pacientes/fotos/<?= $paciente->getFoto() ?>" width="100" height="100"></td>
+        <td colspan="2" rowspan="6"><img src="presentacion/pacientes/fotos/<?= $paciente->getFoto() ?>" width="200" height="200"></td>
         <th colspan="6">DATOS DEL PACIENTE</th>
     </tr>
     <tr>
@@ -217,10 +217,10 @@ $diagnosticoDefinitivo = new DiagnosticoDefinitivo('idConsulta', $consulta->getI
             </th>
         </tr>
         <tr>
-            <th>DIAGNOSTICO DEFINITIVO</th><td><input type="text" name="diagnosticoDefinitivo" value="<?= $diagnosticoDefinitivo->getDiagnosticoDefinitivo()?>"/></td>
+            <th>DIAGNOSTICO DEFINITIVO</th><td><input type="text" name="diagnosticoDefinitivo" value="<?= $diagnosticoDefinitivo->getDiagnosticoDefinitivo()?>" size="120"/></td>
         </tr>
         <tr>
-            <th>OBSERVACIONES</th><td><input type="text" name="observaciones" value="<?= $diagnosticoDefinitivo->getObservaciones()?>"/></td>
+            <th>OBSERVACIONES</th><td><input type="text" name="observaciones" value="<?= $diagnosticoDefinitivo->getObservaciones()?>" size="120"/></td>
         </tr>                       
         <tr>                       
         <input type="hidden" name="idConsulta" value="<?=$consulta->getId()?>"/>            
