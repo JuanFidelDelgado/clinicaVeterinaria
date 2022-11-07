@@ -54,7 +54,7 @@ class PlanTerapeutico {
                         . "tipo4, medicamento4, dosisTotal4, viaAdministracion4, frecuencia4, duracion4, "
                         . "tipo5, medicamento5, dosisTotal5, viaAdministracion5, frecuencia5, duracion5 "
                         . " from planTerapeutico where $campo=$valor";
-                echo $cadenaSQL.'<p>';
+                //echo $cadenaSQL.'<p>';
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];
             }  

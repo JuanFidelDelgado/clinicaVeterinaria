@@ -20,7 +20,7 @@ class DiagnosticoDefinitivo {
         if ($campo != null){
             if (!is_array($campo)){
                 $cadenaSQL="select id, idConsulta, diagnosticoDefinitivo, observaciones from diagnosticoDefinitivo where $campo=$valor";
-                echo $cadenaSQL.'<p>';
+                //echo $cadenaSQL.'<p>';
                 $diagnosticoDefinitivo=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($diagnosticoDefinitivo)>0) $campo=$diagnosticoDefinitivo[0];
             }  

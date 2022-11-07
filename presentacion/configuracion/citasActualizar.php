@@ -46,5 +46,5 @@ switch ($_REQUEST['accion']){
         $citas->modificar();
         break;
 }
-header('location: principal.php?CONTENIDO=presentacion/configuracion/citas.php')
+header('location: principal.php?CONTENIDO=presentacion/configuracion/citas.php&idPaciente='.$_REQUEST['idPaciente'])
 ?>

@@ -121,12 +121,12 @@ alter table consulta add foreign key(idPaciente) references paciente(id) on dele
 
 create table condicionCorporal (
     id int auto_increment primary key not null,
-    condicion varchar(50) not null
+    condicion varchar(50) null
 );
 
 create table estadoHidratacion (
     id int auto_increment primary key not null,
-    hidratacion varchar(50) not null
+    hidratacion varchar(50) null
 );
 
 create table examenClinico (
@@ -151,12 +151,12 @@ alter table desparasitacion add foreign key(idConsulta) references consulta(id) 
 create table constantesFisiologicas (
     id int auto_increment primary key not null,
     idConsulta int not null,
-    tlc int null,
-    temperatura int null,
-    fr int null,
-    fc int null,
-    pulso int null,
-    peso int null
+    tlc varchar(10) null,
+    temperatura varchar(10) null,
+    fr varchar(10) null,
+    fc varchar(10) null,
+    pulso varchar(10) null,
+    peso varchar(10) null
 );
 
 alter table constantesFisiologicas add foreign key(idConsulta) references consulta(id) on delete restrict on update cascade;
@@ -165,13 +165,13 @@ create table planDiagnostico (
     id int auto_increment primary key not null,
     idConsulta int not null,
     cuadroHematico varchar(500) null,
-    fechaCuadroHematico date null,
+    fechaCuadroHematico varchar(30) null,
     parcialOrina varchar(500) null,
-    fechaParcialOrina date null,
+    fechaParcialOrina varchar(30) null,
     coprologico varchar(500) null,
-    fechaCoprologico date null,
+    fechaCoprologico varchar(30) null,
     coproscopico varchar(500) null,
-    fechaCoproscopico date null
+    fechaCoproscopico varchar(30) null
 );
 
 alter table planDiagnostico add foreign key(idConsulta) references consulta(id) on delete restrict on update cascade;

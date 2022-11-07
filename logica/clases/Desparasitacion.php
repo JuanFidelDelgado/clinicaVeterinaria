@@ -20,7 +20,7 @@ class Desparasitacion {
         if ($campo != null){
             if (!is_array($campo)){
                 $cadenaSQL="select id, idConsulta, estadoDesparasitacion, fechaDesparasitacion from desparasitacion where $campo=$valor";
-                echo $cadenaSQL.'<p>';
+                //echo $cadenaSQL.'<p>';
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];
             }  

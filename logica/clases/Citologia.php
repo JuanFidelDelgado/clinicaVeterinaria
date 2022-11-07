@@ -20,7 +20,7 @@ class Citologia {
         if ($campo != null){
             if (!is_array($campo)){
                 $cadenaSQL="select id, idConsulta, resultado, observaciones from citologia where $campo=$valor";
-                echo $cadenaSQL.'<p>';
+                //echo $cadenaSQL.'<p>';
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];
             }  

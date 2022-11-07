@@ -60,5 +60,5 @@ switch ($_REQUEST['accion']){
         }
         break;
 }
-//header('location: principal.php?CONTENIDO=presentacion/configuracion/usuarios.php')
+header('location: principal.php?CONTENIDO=presentacion/configuracion/usuarios.php')
 ?>

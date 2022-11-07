@@ -20,7 +20,7 @@ class ListaProblemas {
         if ($campo != null){
             if (!is_array($campo)){
                 $cadenaSQL="select id, idConsulta, nombre, diagnosticoDiferencial from listaProblemas where $campo=$valor";
-                echo $cadenaSQL.'<p>';
+                //echo $cadenaSQL.'<p>';
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];
             }  

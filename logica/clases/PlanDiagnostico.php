@@ -26,7 +26,7 @@ class PlanDiagnostico {
         if ($campo != null){
             if (!is_array($campo)){
                 $cadenaSQL="select id, idConsulta, cuadroHematico, fechaCuadroHematico, parcialOrina, fechaParcialOrina, coprologico, fechaCoprologico, coproscopico, fechaCoproscopico from planDiagnostico where $campo=$valor";
-                echo $cadenaSQL.'<p>';
+                //echo $cadenaSQL.'<p>';
                 $resultado=ConectorBD::ejecutarQuery($cadenaSQL);
                 if (count($resultado)>0) $campo=$resultado[0];
             }  

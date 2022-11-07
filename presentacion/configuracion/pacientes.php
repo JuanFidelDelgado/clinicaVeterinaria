@@ -80,7 +80,20 @@ if ($idUsuario=='' || $idUsuario==null){
 }  
 ?>
 
+
+<?php
+if ($rol=='C'){
+?>
 <h3 align="center">MIS MASCOTAS</h3>
+<?php
+} else {
+?>      
+<h3 align="center">MIS PACIENTES</h3>
+<?php
+}
+?>
+
+
 <p></p>
 <table border="1" align="center">
     <tr>

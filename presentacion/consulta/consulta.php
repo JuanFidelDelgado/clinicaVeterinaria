@@ -14,21 +14,21 @@ $historiaClinica= new HistoriaClinica('idPaciente', $_REQUEST['idPaciente']);
 $paciente= new Pacientes('id', $_REQUEST['idPaciente']);
 $usuario= new Usuario('id', $paciente->getIdUsuario());
 $cita= new Citas('id', $_REQUEST['idCita']);
-$consulta= new Consulta('idCita', $_REQUEST['idCita']);
-echo $consulta->getId();
-//$examen= new ExamenClinico('idConsulta', $consulta);
-//echo $examen->getActitud();
+$consulta= new Consulta('id', $_REQUEST['idConsulta']);
 
 $titulo='Adicionar';
-if (isset($_REQUEST['id'])) {
-    $titulo = 'Modificar';
-    $examen = new ExamenClinico('idConsulta', $_REQUEST['id']);
-    $desparasitacion = new Desparasitacion('idConsulta', $_REQUEST['id']);
-    $constantesFisiologicas = new ConstantesFisiologicas('idConsulta', $_REQUEST['id']);
-    $planDiagnostico = new PlanDiagnostico('idConsulta', $_REQUEST['id']);
-    $listaProblemas = new ListaProblemas('idConsulta', $_REQUEST['id']);
-    $citologia = new Citologia('idConsulta', $_REQUEST['id']);
-    $planTerapeurico = new PlanTerapeutico('idConsulta', $_REQUEST['id']);
+//if (isset($_REQUEST['id'])) {
+if ($consulta->getId()!=null) {
+    //$titulo = 'Modificar';
+    $examen = new ExamenClinico('idConsulta', $consulta->getId());
+    $desparasitacion = new Desparasitacion('idConsulta', $consulta->getId());
+    $constantesFisiologicas = new ConstantesFisiologicas('idConsulta', $consulta->getId());
+    $planDiagnostico = new PlanDiagnostico('idConsulta', $consulta->getId());
+    $listaProblemas = new ListaProblemas('idConsulta', $consulta->getId());
+    $citologia = new Citologia('idConsulta', $consulta->getId());
+    $planTerapeurico = new PlanTerapeutico('idConsulta', $consulta->getId());
+    $diagnosticoDefinitivo = new DiagnosticoDefinitivo('idConsulta', $consulta->getId());
+    
 } else {
     $examen = new ExamenClinico(null, null);
     $desparasitacion = new Desparasitacion(null, null);
@@ -37,6 +37,7 @@ if (isset($_REQUEST['id'])) {
     $listaProblemas = new ListaProblemas(null, null);
     $citologia = new Citologia(null, null);
     $planTerapeurico = new PlanTerapeutico(null, null);
+    $diagnosticoDefinitivo = new DiagnosticoDefinitivo(null, null);
 }
 ?>
 
@@ -98,6 +99,7 @@ if (isset($_REQUEST['id'])) {
                 <option value="Si">Si</option>
                 <option value="No" selected>No</option>
                 </select>
+                <input type="hidden" name="fechaDesparasitacion" value="<?=date('Y-m-d h:i')?>"
             </td>
         </tr>
     </table>
@@ -127,20 +129,20 @@ if (isset($_REQUEST['id'])) {
             </th>
         </tr>
         <tr>
-            <th>CUADRO HEMÁTICO</th><td><input type="text" name="cuadroHematico" value="<?= $planDiagnostico->getCuadroHematico()?>" size="70"/></td>
-            <th>FECHA</th><td><input type="date" name="fechaCuadroHematico" value="<?= $planDiagnostico->getFechaCuadroHematico()?>"/></td>
+            <th>CUADRO HEMÁTICO</th><td><input type="text" name="cuadroHematico" value="<?= $planDiagnostico->getCuadroHematico()?>" size="50"/></td>
+            <th>FECHA</th><td><input type="text" name="fechaCuadroHematico" value="<?= $planDiagnostico->getFechaCuadroHematico()?>"/></td>
         </tr>               
         <tr>
-            <th>PARCIAL DE ORINA</th><td><input type="text" name="parcialOrina" value="<?= $planDiagnostico->getParcialOrina()?>" size="70"/></td>
-            <th>FECHA</th><td><input type="date" name="fechaParcialOrina" value="<?= $planDiagnostico->getFechaParcialOrina()?>"/></td>
+            <th>PARCIAL DE ORINA</th><td><input type="text" name="parcialOrina" value="<?= $planDiagnostico->getParcialOrina()?>" size="50"/></td>
+            <th>FECHA</th><td><input type="text" name="fechaParcialOrina" value="<?= $planDiagnostico->getFechaParcialOrina()?>"/></td>
         </tr>
         <tr>
-            <th>COPROLÓGICO</th><td><input type="text" name="coprologico" value="<?= $planDiagnostico->getCoprologico()?>" size="70"/></td>
-            <th>FECHA</th><td><input type="date" name="fechaCoprologico" value="<?= $planDiagnostico->getFechaCoprologico()?>"/></td>
+            <th>COPROLÓGICO</th><td><input type="text" name="coprologico" value="<?= $planDiagnostico->getCoprologico()?>" size="50"/></td>
+            <th>FECHA</th><td><input type="text" name="fechaCoprologico" value="<?= $planDiagnostico->getFechaCoprologico()?>"/></td>
         </tr>        
         <tr>
-            <th>COPROSCÓPICO</th><td><input type="text" name="coproscopico" value="<?= $planDiagnostico->getCoproscopico()?>" size="70"/></td>
-            <th>FECHA</th><td><input type="date" name="fechaCoproscopico" value="<?= $planDiagnostico->getFechaCoproscopico()?>"/></td>
+            <th>COPROSCÓPICO</th><td><input type="text" name="coproscopico" value="<?= $planDiagnostico->getCoproscopico()?>" size="50"/></td>
+            <th>FECHA</th><td><input type="text" name="fechaCoproscopico" value="<?= $planDiagnostico->getFechaCoproscopico()?>"/></td>
         </tr>           
     </table>
 <br>
@@ -189,36 +191,36 @@ if (isset($_REQUEST['id'])) {
             <td><input type="text" name="duracion1" value="<?= $planTerapeurico->getDuracion1()?>" size="10"/></td>
         </tr>
         <tr>
-            <td><input type="text" name="tipo2" value="" size="10"/></td>
-            <td><input type="text" name="medicamento2" value="" size="20"/></td>
-            <td><input type="text" name="dosisTotal2" value="" size="10"/></td>
-            <td><input type="text" name="viaAdministracion2" value=""/></td>
-            <td><input type="text" name="frecuencia2" value="" size="10"/></td>
-            <td><input type="text" name="duracion2" value="" size="10"/></td>
+            <td><input type="text" name="tipo2" value="<?= $planTerapeurico->getTipo2()?>" size="10"/></td>
+            <td><input type="text" name="medicamento2" value="<?= $planTerapeurico->getMedicamento2()?>" size="20"/></td>
+            <td><input type="text" name="dosisTotal2" value="<?= $planTerapeurico->getDosisTotal2()?>" size="10"/></td>
+            <td><input type="text" name="viaAdministracion2" value="<?= $planTerapeurico->getViaAdministracion2()?>"/></td>
+            <td><input type="text" name="frecuencia2" value="<?= $planTerapeurico->getFrecuencia2()?>" size="10"/></td>
+            <td><input type="text" name="duracion2" value="<?= $planTerapeurico->getDuracion2()?>" size="10"/></td>
         </tr>
         <tr>
-            <td><input type="text" name="tipo3" value="" size="10"/></td>
-            <td><input type="text" name="medicamento3" value="" size="20"/></td>
-            <td><input type="text" name="dosisTotal3" value="" size="10"/></td>
-            <td><input type="text" name="viaAdministracion3" value=""/></td>
-            <td><input type="text" name="frecuencia3" value="" size="10"/></td>
-            <td><input type="text" name="duracion3" value="" size="10"/></td>
+            <td><input type="text" name="tipo3" value="<?= $planTerapeurico->getTipo3()?>" size="10"/></td>
+            <td><input type="text" name="medicamento3" value="<?= $planTerapeurico->getMedicamento3()?>" size="20"/></td>
+            <td><input type="text" name="dosisTotal3" value="<?= $planTerapeurico->getDosisTotal3()?>" size="10"/></td>
+            <td><input type="text" name="viaAdministracion3" value="<?= $planTerapeurico->getViaAdministracion3()?>"/></td>
+            <td><input type="text" name="frecuencia3" value="<?= $planTerapeurico->getFrecuencia3()?>" size="10"/></td>
+            <td><input type="text" name="duracion3" value="<?= $planTerapeurico->getDuracion3()?>" size="10"/></td>
         </tr>
         <tr>
-            <td><input type="text" name="tipo4" value="" size="10"/></td>
-            <td><input type="text" name="medicamento4" value="" size="20"/></td>
-            <td><input type="text" name="dosisTotal4" value="" size="10"/></td>
-            <td><input type="text" name="viaAdministracion4" value=""/></td>
-            <td><input type="text" name="frecuencia4" value="" size="10"/></td>
-            <td><input type="text" name="duracion4" value="" size="10"/></td>
+            <td><input type="text" name="tipo4" value="<?= $planTerapeurico->getTipo4()?>" size="10"/></td>
+            <td><input type="text" name="medicamento4" value="<?= $planTerapeurico->getMedicamento4()?>" size="20"/></td>
+            <td><input type="text" name="dosisTotal4" value="<?= $planTerapeurico->getDosisTotal4()?>" size="10"/></td>
+            <td><input type="text" name="viaAdministracion4" value="<?= $planTerapeurico->getViaAdministracion4()?>"/></td>
+            <td><input type="text" name="frecuencia4" value="<?= $planTerapeurico->getFrecuencia4()?>" size="10"/></td>
+            <td><input type="text" name="duracion4" value="<?= $planTerapeurico->getDuracion4()?>" size="10"/></td>
         </tr>
         <tr>
-            <td><input type="text" name="tipo5" value="" size="10"/></td>
-            <td><input type="text" name="medicamento5" value="" size="20"/></td>
-            <td><input type="text" name="dosisTotal5" value="" size="10"/></td>
-            <td><input type="text" name="viaAdministracion5" value=""/></td>
-            <td><input type="text" name="frecuencia5" value="" size="10"/></td>
-            <td><input type="text" name="duracion5" value="" size="10"/></td>
+            <td><input type="text" name="tipo5" value="<?= $planTerapeurico->getTipo5()?>" size="10"/></td>
+            <td><input type="text" name="medicamento5" value="<?= $planTerapeurico->getMedicamento5()?>" size="20"/></td>
+            <td><input type="text" name="dosisTotal5" value="<?= $planTerapeurico->getDosisTotal5()?>" size="10"/></td>
+            <td><input type="text" name="viaAdministracion5" value="<?= $planTerapeurico->getViaAdministracion5()?>"/></td>
+            <td><input type="text" name="frecuencia5" value="<?= $planTerapeurico->getFrecuencia5()?>" size="10"/></td>
+            <td><input type="text" name="duracion5" value="<?= $planTerapeurico->getDuracion5()?>" size="10"/></td>
         </tr>
     </table>
 <br>
@@ -229,10 +231,10 @@ if (isset($_REQUEST['id'])) {
             </th>
         </tr>
         <tr>
-            <th>DIAGNOSTICO DEFINITIVO</th><td><input type="text" name="diagnosticoDefinitivo" value=""/></td>
+            <th>DIAGNOSTICO DEFINITIVO</th><td><input type="text" name="diagnosticoDefinitivo" value="<?= $diagnosticoDefinitivo->getDiagnosticoDefinitivo()?>"/></td>
         </tr>
         <tr>
-            <th>OBSERVACIONES</th><td><input type="text" name="observaciones" value=""/></td>
+            <th>OBSERVACIONES</th><td><input type="text" name="observaciones" value="<?= $diagnosticoDefinitivo->getObservaciones()?>"/></td>
         </tr>                       
         <tr>                       
         <input type="hidden" name="idConsulta" value="<?=$consulta->getId()?>"/>            

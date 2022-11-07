@@ -22,7 +22,7 @@ for ($i = 0; $i < count($resultado); $i++) {
     $lista.="<td>{$medico->getNombres()} - {$medico->getApellidos()}</td>";
     $lista.="<td>{$cita->getEstadoCita()}</td>";
     if ($cita->getEstadoCita()=='Cumplida') {
-        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consulta.php&idPaciente={$consulta->getIdPaciente()}&idCita={$consulta->getIdCita()}&idMedico={$consulta->getIdMedico()}&idHistoriaClinica={$consulta->getIdHistoriaClinica()}'>Ver reporte de consulta</a></td>";
+        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consulta.php&idPaciente={$consulta->getIdPaciente()}&idCita={$consulta->getIdCita()}&idMedico={$consulta->getIdMedico()}&idHistoriaClinica={$consulta->getIdHistoriaClinica()}&idConsulta={$consulta->getId()}'>Ver reporte de consulta</a></td>";
     }
     $lista.="</<tr>";
 }
