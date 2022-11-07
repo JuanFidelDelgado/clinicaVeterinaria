@@ -29,7 +29,7 @@ if ($idUsuario=='' || $idUsuario==null){
         $lista.="<td>{$paciente->getSexo()}</td>";
         $lista.="<td>{$paciente->getColor()}</td>";
         $lista.="<td>{$paciente->getSeñasParticulares()}</td>";
-        $lista.="<td>";
+        $lista.="<td align='center'>";
             $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/pacientesFormulario.php&accion=Modificar&id={$paciente->getId()}&idUsuario={$usuario->getId()}' title='Modificar'><img src='presentacion/imagenes/update.png'></a>";
             $lista.="<img src='presentacion/imagenes/delete.png' onClick='eliminar({$paciente->getId()})' title='Eliminar'>";
         $lista.="</td>";
@@ -37,11 +37,12 @@ if ($idUsuario=='' || $idUsuario==null){
         if ($historiaClinica->getId()==null){
             $lista.="<td>El paciente no tiene historia clínica</td>";            
         } else {
-            $lista.="<td>";
+            $lista.="<td align='center'>";
                 $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citas.php&idPaciente={$paciente->getId()}' title='Ver citas'><img src='presentacion/imagenes/calendar.png' width='40' heigth='40'></a>";
                 $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citasFormulario.php&idPaciente={$paciente->getId()}' title='Agendar cita'><img src='presentacion/imagenes/add.png'></a>";
             $lista.="</td>";
         }
+        $lista.="<td align='center'><a href='principal.php?CONTENIDO=presentacion/consulta/consultas.php&idHistoria={$historiaClinica->getId()}&idPaciente={$historiaClinica->getIdPaciente()}' title='Ver consultas'>Ver consultas</a></td>";
         $lista.="</tr>";
     }
 } else {
@@ -62,19 +63,19 @@ if ($idUsuario=='' || $idUsuario==null){
         $lista.="<td>{$paciente->getSexo()}</td>";
         $lista.="<td>{$paciente->getColor()}</td>";
         $lista.="<td>{$paciente->getSeñasParticulares()}</td>";
-        $lista.="<td>";
+        $lista.="<td align='center'>";
             $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/pacientesFormulario.php&accion=Modificar&id={$paciente->getId()}&idUsuario={$usuario->getId()}' title='Modificar'><img src='presentacion/imagenes/update.png'></a>";
             $lista.="<img src='presentacion/imagenes/delete.png' onClick='eliminar({$paciente->getId()})' title='Eliminar'>";
         $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/historiaClinica.php&idPaciente={$paciente->getId()}' title='Ver historia clinica'><img src='presentacion/imagenes/folder.png'></a></td>";
         if ($historiaClinica->getId()==null){
             $lista.="<td>El paciente no tiene historia clínica</td>";            
         } else {
-            $lista.="<td>";
+            $lista.="<td align='center'>";
                 $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citas.php&idPaciente={$paciente->getId()}' title='Ver citas'><img src='presentacion/imagenes/calendar.png' width='40' heigth='40'></a>";
                 $lista.="<a href='principal.php?CONTENIDO=presentacion/configuracion/citasFormulario.php&idPaciente={$paciente->getId()}' title='Agendar cita'><img src='presentacion/imagenes/add.png'></a>";
             $lista.="</td>";
         }
-        $lista.="</tr>";;
+        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultas.php&idHistoria={$historiaClinica->getId()}&idPaciente={$historiaClinica->getIdPaciente()}' title='Ver consultas'>Ver consultas</a></td>";
         $lista.="</tr>";
     }
 }  
@@ -104,12 +105,12 @@ if ($rol=='C'){
         <th><a href="principal.php?CONTENIDO=presentacion/configuracion/pacientesFormulario.php&accion=Adicionar" name="Adicionar"><img src='presentacion/imagenes/add.png' title='Adicionar'></a></th>
         <?php
         } else {
-        ?>      
-        <th></th>
+        ?>    
+        <th>Acciones</th>
         <?php
         }
         ?>
-        <th>Historia<br>Clínica</th><th>Citas</th>
+        <th>Historia<br>Clínica</th><th>Citas</th><th>Ver consultas</th>
     </tr>
     <?=$lista?>
 </table>

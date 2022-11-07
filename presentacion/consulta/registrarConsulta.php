@@ -109,6 +109,6 @@ $citologia->guardar();
 $planTerapeurico->guardar();
 $diagnosticoDefinitivo->guardar();
 
-//header('location: principal.php?CONTENIDO=presentacion/consulta/citas.php&idPaciente='.$_REQUEST['idPaciente'])
+header('location: ../../principal.php?CONTENIDO=presentacion/configuracion/citas.php')
 
 ?>

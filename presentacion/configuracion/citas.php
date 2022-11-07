@@ -55,7 +55,7 @@ for ($i = 0; $i < count($resultado); $i++) {
         $lista.="<td></td>";
     }
     if ($perfil->getTipoUsuarioEnObjeto()=='Médico' && $citas->getEstadoCita()=='Programada') {
-        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultaActualizar.php&idPaciente={$citas->getIdPaciente()}&idCita={$citas->getId()}&idMedico={$USUARIO->getId()}&idHistoriaClinica={$historiaClinica->getId()}'>Ir a consulta</a></td>";
+        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultaActualizar.php&idPaciente={$citas->getIdPaciente()}&idCita={$citas->getId()}&idMedico={$USUARIO->getId()}'>Diligenciar consulta</a></td>";
     }
     $lista.="</tr>";
 }

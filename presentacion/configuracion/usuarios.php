@@ -12,7 +12,7 @@ $USUARIO= unserialize($_SESSION['usuario']);
 $rol= $USUARIO->getTipoUsuario();
 
 if ($rol=='A'){
-    @$resultado= Usuario::getListaBuscarEnObjetos($_REQUEST['parametro'], 'tipoUsuario');
+    @$resultado= Usuario::getListaBuscarEnObjetos($_REQUEST['parametro'], 'id');
 }else {
     $resultado= Usuario::getListaEnObjetos("id={$USUARIO->getId()}", "id");
 }

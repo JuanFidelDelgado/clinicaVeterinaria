@@ -17,12 +17,12 @@ for ($i = 0; $i < count($resultado); $i++) {
     $cita= new Citas('id', $consulta->getIdCita());
     $medico= new Usuario('id', $consulta->getIdMedico());
     $lista.="<tr>";
-    $lista.="<td>{$consulta->getId()}</td>";
+    //$lista.="<td>{$consulta->getId()}</td>";
     $lista.="<td>{$cita->getFecha()} - {$cita->getHora()}</td>";
     $lista.="<td>{$medico->getNombres()} - {$medico->getApellidos()}</td>";
     $lista.="<td>{$cita->getEstadoCita()}</td>";
     if ($cita->getEstadoCita()=='Cumplida') {
-        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consulta.php&idPaciente={$consulta->getIdPaciente()}&idCita={$consulta->getIdCita()}&idMedico={$consulta->getIdMedico()}&idHistoriaClinica={$consulta->getIdHistoriaClinica()}&idConsulta={$consulta->getId()}'>Ver reporte de consulta</a></td>";
+        $lista.="<td><a href='principal.php?CONTENIDO=presentacion/consulta/consultaGuardada.php&idPaciente={$consulta->getIdPaciente()}&idCita={$consulta->getIdCita()}&idMedico={$consulta->getIdMedico()}&idHistoriaClinica={$consulta->getIdHistoriaClinica()}&idConsulta={$consulta->getId()}'>Ver reporte de consulta</a></td>";
     }
     $lista.="</<tr>";
 }
@@ -32,7 +32,7 @@ for ($i = 0; $i < count($resultado); $i++) {
 <p></p>
 <table border="1" align="center">
     <tr>
-        <th>IdConsulta</th><th>Fecha Consulta</th><th>Médico</th><th>Estado Consulta</th><th>Ver Consulta</th>        
+        <th>Fecha Consulta</th><th>Médico</th><th>Estado Consulta</th><th>Ver Consulta</th>        
     <?=$lista?>
 </table>
 

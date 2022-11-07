@@ -15,28 +15,16 @@ $paciente= new Pacientes('id', $_REQUEST['idPaciente']);
 $cliente= new Usuario('id', $paciente->getIdUsuario());
 $cita= new Citas('id', $_REQUEST['idCita']);
 $consulta= new Consulta('idCita', $_REQUEST['idCita']);
-/*
-//$titulo='Adicionar';
-if ($consulta->getId()!=null) {
-    $examen = new ExamenClinico('idConsulta', $consulta->getId());
-    $desparasitacion = new Desparasitacion('idConsulta', $consulta->getId());
-    $constantesFisiologicas = new ConstantesFisiologicas('idConsulta', $consulta->getId());
-    $planDiagnostico = new PlanDiagnostico('idConsulta', $consulta->getId());
-    $listaProblemas = new ListaProblemas('idConsulta', $consulta->getId());
-    $citologia = new Citologia('idConsulta', $consulta->getId());
-    $planTerapeurico = new PlanTerapeutico('idConsulta', $consulta->getId());
-    $diagnosticoDefinitivo = new DiagnosticoDefinitivo('idConsulta', $consulta->getId());
-    
-} else {*/
-    $examen = new ExamenClinico(null, null);
-    $desparasitacion = new Desparasitacion(null, null);
-    $constantesFisiologicas = new ConstantesFisiologicas(null, null);
-    $planDiagnostico = new PlanDiagnostico(null, null);
-    $listaProblemas = new ListaProblemas(null, null);
-    $citologia = new Citologia(null, null);
-    $planTerapeurico = new PlanTerapeutico(null, null);
-    $diagnosticoDefinitivo = new DiagnosticoDefinitivo(null, null);
-//}
+
+$examen = new ExamenClinico('idConsulta', $consulta->getId());
+$desparasitacion = new Desparasitacion('idConsulta', $consulta->getId());
+$constantesFisiologicas = new ConstantesFisiologicas('idConsulta', $consulta->getId());
+$planDiagnostico = new PlanDiagnostico('idConsulta', $consulta->getId());
+$listaProblemas = new ListaProblemas('idConsulta', $consulta->getId());
+$citologia = new Citologia('idConsulta', $consulta->getId());
+$planTerapeurico = new PlanTerapeutico('idConsulta', $consulta->getId());
+$diagnosticoDefinitivo = new DiagnosticoDefinitivo('idConsulta', $consulta->getId());
+
 ?>
 
 <h3 align="center">CONSULTA</h3>
@@ -92,7 +80,7 @@ if ($consulta->getId()!=null) {
                DESPARASITACIÓN
             </th>
         </tr>
-        <tr><th>Se realiza desparasitación:</th>
+        <tr><th>ESTADO DESPARASITACIÓN</th>
             <td><select name="estadoDesparasitacion" value="<?=$desparasitacion->getEstadoDesparasitacion()?>">
                 <option value="Si">Si</option>
                 <option value="No" selected>No</option>
@@ -239,23 +227,7 @@ if ($consulta->getId()!=null) {
         </tr>
     </table>
         <br>
-        <br>
-    <table align="center" border="1">
-        
-        <?php
-        if ($medico->getTipoUsuarioEnObjeto()=='Médico'){
-        ?>
-        <th colspan="6" align="right"><input type="submit" name="guardar" value="Adicionar"/></th>
-        <?php
-        } 
-        ?>
-        <!--
-        <tr>
-            <th colspan="6" align="right"><input type="submit" name="guardar" value="Adicionar"/></th>
-        </tr>
-        -->
-    </table>
-        
+        <br>        
 </form>
 <br>
 
@@ -268,4 +240,3 @@ function mostrarFoto(){
     };
 }
 </script>
-
