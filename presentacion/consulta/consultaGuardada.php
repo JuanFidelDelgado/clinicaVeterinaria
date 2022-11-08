@@ -30,7 +30,7 @@ $diagnosticoDefinitivo = new DiagnosticoDefinitivo('idConsulta', $consulta->getI
 <h3 align="center">CONSULTA</h3>
 <p></p>
 
-<table border="1" align="center">
+<table border="1" align="center" width="1000">
     <tr>        
         <th colspan="6">DATOS DEL PROFESIONAL</th>
     </tr>
@@ -39,9 +39,9 @@ $diagnosticoDefinitivo = new DiagnosticoDefinitivo('idConsulta', $consulta->getI
     </tr>
 </table>
 <br>
-<table border="1" align="center">
+<table border="1" align="center" width="1000">
     <tr>
-        <td colspan="2" rowspan="6"><img src="presentacion/pacientes/fotos/<?= $paciente->getFoto() ?>" width="200" height="200"></td>
+        <td colspan="2" rowspan="6"><img src="presentacion/pacientes/fotos/<?= $paciente->getFoto() ?>" width="250" height="200"></td>
         <th colspan="6">DATOS DEL PACIENTE</th>
     </tr>
     <tr>
@@ -62,7 +62,7 @@ $diagnosticoDefinitivo = new DiagnosticoDefinitivo('idConsulta', $consulta->getI
 </table>
 <br>
 <form name="formularioConsulta" method="post" action="presentacion/consulta/registrarConsulta.php">
-    <table align="center" border="1">
+    <table align="center" border="1" width="1000">
         <tr>
             <th colspan="7">
                EXAMEN CLÍNICO 
