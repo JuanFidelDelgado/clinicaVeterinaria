@@ -8,14 +8,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this t
 */
 
 #index{
-    top: 100px;
+    top: 400px;
 }
 
 body{ /*Características del cuerpo*/ 
-    background-color: #4ab4c4;
-    /*background-image: url(../imagenes/animalcenter.png);
-    background-repeat: repeat-y;*/
-    background-size: 20%;
+    /*background-color: #4ab4c4;*/
+    background-image: url(../imagenes/animalcenter.png);
+    background-repeat: no-repeat;
+    background-size: 15%;
     overflow: visible;
     margin: 0;
     scroll: 
@@ -32,13 +32,16 @@ h3{ /*Color del texto de titulos*/
     color: #000000;
 }
 
-tr:hover{ /*Características cuando el puntero pasa sobre las filas*/
+tr:hover{ /*Hover: Características cuando el puntero pasa sobre las filas*/
     color: black;
+    width: 250px;
+    heigth: 300px;
+    opacity: .9;
 }
 
 th{ /*Color para los encabezados de las tablas*/
     
-    background-color: darkcyan;
+    background-color: none;
 }
 
 input:focus{ /*Características cuando los elementos de los formularios estan en uso*/
@@ -182,4 +185,29 @@ li:hover{
 
 .registro {
     background-color: #4ab4c4;
+}
+
+.imagenes {
+    display: inline-flex;
+    width: 800px;
+    height: 450px;
+}
+
+.imagenes img {
+    width: 0px;
+    flex-grow: 2;
+    object-fit: cover;
+    opacity: .8 ;
+    transition: 0.5s ease;
+}
+
+.imagenes img:hover {
+    cursor: crosshair;
+    width: 400px;
+    opacity: 1;
+    filter: contrast(120%);
+}
+
+.formularioRegistro {
+    background-color: white;
 }
