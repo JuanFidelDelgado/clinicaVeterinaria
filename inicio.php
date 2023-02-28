@@ -51,10 +51,9 @@ if ($USUARIO->getTipoUsuarioEnObjeto()=='Administrador'){
 } 
 ?>
 <center>
-    <h2></h2>
-<table border="2">
-    <tr>
-        <?= $lista ?>
-    </tr>
-</table>
+    <table border="2">
+        <tr>
+            <?= $lista ?>
+        </tr>
+    </table>
 </center>
